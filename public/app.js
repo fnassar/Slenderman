@@ -13,33 +13,45 @@ socket.on('connect', () => {
 // //console.log('ml5 version:', ml5.version);
 
 let img;
+let video;
 let detector;
+let detections = [];
 
 function preload(){
-    img = loadImage("/img/cat.jpg");
+    img = loadImage("/img/cat_dog.jpg");
     detector = ml5.objectDetector('cocossd');
 }
 
 function gotDetections(error, results) {
-    if (error) {
-        console.error(error);
-    }
-    console.log(results);
-    for (i in results.lenght) {
-      let object = results[i];
-      stroke(0, 255, 0);
-      noFill();
-      redirect(object.x, object.y, object.width, object.height);
-    }
+  if (error) {
+      console.error(error);
+  }
+  detections = results;
+  detector.detect(video, gotDetections);
 }
 
 function setup() {
-    createCanvas(1000, 1000);
-    //console.log(detector);
-    image(img, 0, 0, 500, 500);
-    detector.detect(img, gotDetections);
+  createCanvas(612, 408);
+  //console.log(detector);
+  //image(img, 0, 0);
+  video = createCapture(VIDEO);
+  video.size(640, 480);
+  video.hide();
+  detector.detect(video, gotDetections);
 }
 
 function draw() {
+  image(video, 0, 0);
 
+  for (i in detections){
+    let object = detections[i];
+    stroke(0, 255, 0);
+    strokeWeight(4);
+    noFill();
+    rect(object.x, object.y, object.width, object.height);
+    noStroke();
+    fill(255);
+    textSize(24);
+    text(object.label, object.x + 10, object.y + 24);
+  }
 }
