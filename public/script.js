@@ -17,31 +17,31 @@ socket.on('connect', () => {
 // })
 
 
-////ML5
+////////ML5
 //console.log('ml5 version:', ml5.version);
 
-let img;
-let detector;
+// let img;
+// let detector;
 
-function preload(){
-    img = loadImage("/img/cat.jpg");
-    detector = ml5.objectDetector('cocossd');
-}
+// function preload(){
+//     img = loadImage("/img/cat.jpg");
+//     detector = ml5.objectDetector('cocossd');
+// }
 
-function gotDetections(error, results) {
-    if (error) {
-        console.error(error);
-    }
-    console.log(results);
-}
+// function gotDetections(error, results) {
+//     if (error) {
+//         console.error(error);
+//     }
+//     console.log(results);
+// }
 
-function setup() {
-    createCanvas(1000, 1000);
-    //console.log(detector);
-    image(img, 0, 0);
-    detector.detect(img, gotDetections);
-}
+// function setup() {
+//     createCanvas(1000, 1000);
+//     //console.log(detector);
+//     image(img, 0, 0);
+//     detector.detect(img, gotDetections);
+// }
 
-function draw() {
+// function draw() {
 
-}
+// }
