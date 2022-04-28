@@ -1,4 +1,3 @@
-
 // opens and connect to socket
 let socket = io();
 
@@ -26,12 +25,18 @@ function gotDetections(error, results) {
         console.error(error);
     }
     console.log(results);
+    for (i in results.lenght) {
+      let object = results[i];
+      stroke(0, 255, 0);
+      noFill();
+      redirect(object.x, object.y, object.width, object.height);
+    }
 }
 
 function setup() {
     createCanvas(1000, 1000);
     //console.log(detector);
-    image(img, 0, 0);
+    image(img, 0, 0, 500, 500);
     detector.detect(img, gotDetections);
 }
 
