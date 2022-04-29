@@ -1,24 +1,22 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-
-    <script type="text/javascript" src="/socket.io/socket.io.js"></script>
-    
-    <!-- p5 -->
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/1.0.0/p5.min.js"></script>
-    <!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/1.0.0/addons/p5.sound.min.js"></script> -->
-    <!-- ml5 -->
-    <script src="https://unpkg.com/ml5@latest/dist/ml5.min.js"></script>
-    <!-- script and stylesheet -->
-    <script type="text/javascript" src="app.js"></script>
-    <link rel="stylesheet" href="style.css">
-
+    <title>Tresure Hunt</title>
 </head>
+
 <body>
-    
+    <!-- Enter chat messages here -->
+    <form class="sub-container" id="join-form">
+        <input type="text" class="chat-input-name" id="name-input" placeholder="Name" required/>
+        <input type="text" class="chat-input-msg" id="room-input" placeholder="Room Name" required/>
+        <button id="join-button">Join Room</button>
+    </form>
+
+    <script src="lobby.js"></script>
 </body>
+
 </html>

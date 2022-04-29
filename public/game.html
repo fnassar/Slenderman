@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+    <script type="text/javascript" src="/socket.io/socket.io.js"></script>
+
+    <!-- p5 -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/1.0.0/p5.min.js"></script>
+    <!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/1.0.0/addons/p5.sound.min.js"></script> -->
+    <!-- ml5 -->
+    <script src="https://unpkg.com/ml5@latest/dist/ml5.min.js"></script>
+    <!-- script and stylesheet -->
+    <!-- has ml5 sketch and p5 controls -->
+    <script type="text/javascript" src="ml5.js"></script>
+    <!-- has socket connections and window load function -->
+    <script type="text/javascript" src="app.js"></script>
+    <link rel="stylesheet" href="style.css">
+
+</head>
+
+<body>
+    <!-- temp section -->
+    <section class="container">
+        <p class="user-name" id="user-name"></p>
+        <button class="newWin" id="newWin">ADD WIN</button>
+    </section>
+    <section id="canvas_container" class="container canva">
+        <!-- p5 sketch goes here -->
+    </section>
+    <!-- will add css to make section overlay main and only apear when user presses on '...'' button -->
+    <section class="container">
+
+    </section>
+</body>
+
+</html>
