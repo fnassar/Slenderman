@@ -1,7 +1,7 @@
 // opens and connect to socket
 let socket = io();
 // add a div to log all users new wins
-let logbox = document.getElementById('logprevstuff');
+let logbox = document.getElementById('div_wins_record');
 //listen for confirmation
 socket.on('connect', () => {
         console.log("client connected via sockets");
@@ -28,7 +28,7 @@ socket.on('newWin', (data) => {
     console.log(data);
     let winn = document.createElement('li');
     winn.innerHTML = data.name + " : " + data.msg;
-    logbox.appendChild(winn);
+    logbox.appendChild(data);
 })
 
 
@@ -42,24 +42,26 @@ window.addEventListener('load', () => {
     }
 
     console.log(rooms);
+    console.log(logbox);
 
     socket.on('userData', rooms);
 
     username.innerHTML = sessionStorage.getItem('name');
 
-    let chatForm = document.getElementById('chat-form');
-
+    // let chatForm = document.getElementById('chat-form');
+    let newWin = document.getElementById('newWin');
+    let logWinsDiv = document.getElementById('div_wins_record');
     // e=event
-    chatForm.addEventListener('submit', (e) => {
-        e.preventDefault(); // stops eg enter to submit
+    newWin.addEventListener('click', () => {
+        // e.preventDefault(); // stops eg enter to submit
         let name = sessionStorage.getItem('name');
-        let msg = document.getElementById('msg-input').value;
+        // let msg = document.getElementById('msg-input').value;
 
         chatObj = {
             'name': name,
-            'msg': msg
+            'msg': "msg"
         }
 
-        socket.emit('chatMessage', chatObj);
+        socket.emit('newWin', chatObj);
     })
 })

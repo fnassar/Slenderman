@@ -28,23 +28,23 @@ function setup() {
     video = createCapture(VIDEO);
     video.size(640, 480);
     video.hide();
+    // error here no clue why
     detector.detect(video, gotDetections);
 }
 
-function draw() {
-    function draw() {
-        image(video, 0, 0);
 
-        for (i in detections) {
-            let object = detections[i];
-            stroke(0, 255, 0);
-            strokeWeight(4);
-            noFill();
-            rect(object.x, object.y, object.width, object.height);
-            noStroke();
-            fill(255);
-            textSize(24);
-            text(object.label, object.x + 10, object.y + 24);
-        }
+function draw() {
+    image(video, 0, 0);
+
+    for (i in detections) {
+        let object = detections[i];
+        stroke(0, 255, 0);
+        strokeWeight(4);
+        noFill();
+        rect(object.x, object.y, object.width, object.height);
+        noStroke();
+        fill(255);
+        textSize(24);
+        text(object.label, object.x + 10, object.y + 24);
     }
 }
