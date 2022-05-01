@@ -46,6 +46,7 @@ function draw() {
         fill(255);
         textSize(24);
         text(object.label, object.x + 10, object.y + 24);
+        
     }
 }
 
