@@ -37,7 +37,7 @@ window.addEventListener('load', () => {
     let rooms = {
         name: sessionStorage.getItem('name'),
         room: sessionStorage.getItem('room')
-    }
+    };
 
     console.log(rooms);
     console.log(logbox);
@@ -46,20 +46,14 @@ window.addEventListener('load', () => {
 
     username.innerHTML = sessionStorage.getItem('name');
 
-    // let chatForm = document.getElementById('chat-form');
     let newWin = document.getElementById('newWin');
     let logWinsDiv = document.getElementById('div_wins_record');
-    // e=event
     newWin.addEventListener('click', () => {
-        // e.preventDefault(); // stops eg enter to submit
         let name = sessionStorage.getItem('name');
-        // let msg = document.getElementById('msg-input').value;
-
         chatObj = {
             'name': name,
             'msg': "msg"
         }
-
         socket.emit('newWin', chatObj);
     })
 })
