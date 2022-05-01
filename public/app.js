@@ -9,7 +9,7 @@ socket.on('connect', () => {
         let data = {
             "name": sessionStorage.getItem('name'),
             "room": sessionStorage.getItem('room')
-        }
+        };
         socket.emit('userData', data);
     })
     // recieve prev msgs
@@ -30,8 +30,6 @@ socket.on('newWin', (data) => {
     winn.innerHTML = data.name + " : " + data.msg;
     logbox.appendChild(data);
 })
-
-
 
 window.addEventListener('load', () => {
     let username = document.getElementById('user-name');
