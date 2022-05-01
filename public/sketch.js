@@ -34,7 +34,9 @@ function setup() {
 
 
 function draw() {
-    image(video, 0, 0);
+    translate(width, 0); // move to far corner
+    scale(-1.0, 1.0); // flip x-axis backwards
+    image(video, 0, 0, width, height); //video on canvas, position, dimensions
 
     for (i in detections) {
         let object = detections[i];
@@ -46,7 +48,6 @@ function draw() {
         fill(255);
         textSize(24);
         text(object.label, object.x + 10, object.y + 24);
-        
+
     }
 }
-
