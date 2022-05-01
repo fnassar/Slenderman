@@ -43,6 +43,8 @@ socket.on('newWin', (data) => {
 
     username.innerHTML = sessionStorage.getItem('name');
 
+    console.log("this is a test");
+
 // function setup() {
 //   //to create canvas and put it in the background
 //   canvas = createCanvas(windowWidth,windowHeight);
