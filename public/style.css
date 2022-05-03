@@ -24,12 +24,48 @@
         height: 90vh;
         margin: 5vh 5vw;
         padding: 0;
+        color: antiquewhite;
     }
-    .join-form {
+    /* ============ title ============ */
+    .lobby_title {
         display: flex;
         flex-direction: column;
-        height: 40vh;
+        justify-content: center;
+        align-items: center;
+        height: 30vh;
         width: 80vw;
+    }
+    .lobby_title h1 {
+        font-size: 5vh;
+        max-width: 80%;
+        width: max-content;
+        text-align: center;
+    }
+    /* ============ form ============= */
+    .join_form {
+        display: flex;
+        flex-direction: column;
+        justify-content: space-around;
+        align-items: center;
+        height: 20vh;
+        width: 80vw;
+    }
+    .lobby_input {
+        height: 3vh;
+        padding: 1vh;
+        border: #111;
+        border-radius: 0;
+        background-color: #555555aa;
+        color: antiquewhite;
+    }
+    .join_button {
+        margin: 1vh 0;
+        height: 5vh;
+        padding: 1vh;
+        border: #111;
+        border-radius: 2.5vh;
+        background-color: #555555aa;
+        color: antiquewhite;
     }
     /* =============================== */
     /* ========= game screen ========= */
