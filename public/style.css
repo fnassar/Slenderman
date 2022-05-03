@@ -1,0 +1,58 @@
+@media only screen and (max-width: 850px) {
+    html,
+    body {
+        width: 100vw;
+        height: 100vh;
+        margin: 0;
+        padding: 0;
+        display: flex;
+    }
+    /* this is an error message for using pc */
+    .error {
+        display: none;
+    }
+    /* =============================== */
+    /* ============ lobby ============ */
+    /* =============================== */
+    .lobby {
+        background-color: #222;
+        display: flex;
+        justify-content: space-around;
+        flex-direction: column;
+        align-items: center;
+        width: 90vw;
+        height: 90vh;
+        margin: 5vh 5vw;
+        padding: 0;
+    }
+    .join-form {
+        display: flex;
+        flex-direction: column;
+        height: 40vh;
+        width: 80vw;
+    }
+    /* =============================== */
+    /* ========= game screen ========= */
+    /* =============================== */
+}
+
+@media only screen and (min-width: 851px) {
+    html,
+    body {
+        width: 100vw;
+        height: 100vh;
+        margin: 0;
+        padding: 0;
+        display: flex;
+    }
+    .container {
+        display: none;
+    }
+    .error {
+        display: flex;
+        width: 100vw;
+        height: 100vh;
+        align-items: center;
+        justify-content: center;
+    }
+}
