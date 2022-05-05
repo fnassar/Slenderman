@@ -36,14 +36,14 @@ function setup() {
         audio: false,
 
         ///TO TEST ON PHONE, COMMENT IN THIS PART AND COMMENT OUT THE OTHER ONE 
-        video: {
-            facingMode: {
-                exact: "environment"
-            }
-        }
         // video: {
-        //   facingMode: "user"
-        // } 
+        //     facingMode: {
+        //         exact: "environment"
+        //     }
+        // }
+        video: {
+            facingMode: "user"
+        }
     };
     video = createCapture(constraints);
     //video.size(windowHeight, 480);
