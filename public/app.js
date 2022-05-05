@@ -38,6 +38,11 @@ window.addEventListener('load', () => {
         name: sessionStorage.getItem('name'),
         room: sessionStorage.getItem('room')
     };
+    // if user enters without writting name
+    if (!rooms.name || !rooms.room) {
+        console.log("name or room not available");
+        window.location = './';
+    }
 
     console.log(rooms);
     console.log(logbox);

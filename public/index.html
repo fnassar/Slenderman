@@ -5,16 +5,25 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
     <title>Tresure Hunt</title>
 </head>
 
-<body>
+<body class="lobby">
     <!-- Enter chat messages here -->
-    <form class="sub-container" id="join-form">
-        <input type="text" class="chat-input-name" id="name-input" placeholder="Name" required/>
-        <input type="text" class="chat-input-msg" id="room-input" placeholder="Room Name" required/>
-        <button id="join-button">Join Room</button>
-    </form>
+    <section class="container">
+        <div class="lobby_title" id="lobby_title">
+            <h1> TITLE GOES HERE</h1>
+        </div>
+        <form class="join_form" id="join_form">
+            <input type="text" class="lobby_input" id="name_input" placeholder="Name" required/>
+            <input type="text" class="lobby_input" id="room_input" placeholder="Room Name" required/>
+            <button class="join_button" id="join_button">Join Room</button>
+        </form>
+    </section>
+    <section class="error">
+        <p>Please use a phone or a tablet for this(back camera requred)</p>
+    </section>
 
     <script src="lobby.js"></script>
 </body>
