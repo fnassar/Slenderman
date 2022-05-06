@@ -28,6 +28,7 @@ function gotDetections(error, results) {
 function setup() {
     //to create canvas and put it in the background
     canvas = createCanvas(windowWidth, windowHeight);
+    canvas.parent('canvas_container');
     canvas.position(0, 0);
     canvas.style('z-index', '-1');
 
