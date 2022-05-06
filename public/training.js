@@ -14,6 +14,7 @@ let classifier;
 let itemButton;
 let item2Button;
 let trainButton;
+let saveButton; 
 
 
 
@@ -51,14 +52,14 @@ function setup() {
         audio: false,
 
         ///TO TEST ON PHONE, COMMENT IN THIS PART AND COMMENT OUT THE OTHER ONE 
-        // video: {
-        //     facingMode: {
-        //         exact: "environment"
-        //     }
-        // }
         video: {
-          facingMode: "user"
-        } 
+            facingMode: {
+                exact: "environment"
+            }
+        }
+        // video: {
+        //   facingMode: "user"
+        // } 
     };
 
     video_trained = createCapture(constraints);
@@ -83,6 +84,11 @@ function setup() {
     trainButton = createButton('train');
     trainButton.mousePressed(function(){
         classifier.train(whileTraining);
+    });
+
+    saveButton = createButton('save');
+    saveButton.mousePressed(function(){
+        classifier.save();
     });
 }
 
