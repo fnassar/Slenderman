@@ -43,8 +43,8 @@ function setup() {
         //     }
         // }
         video: {
-          facingMode: "user"
-        } 
+            facingMode: "user"
+        }
     };
     video = createCapture(constraints);
     //video.size(windowHeight, 480);
@@ -97,7 +97,6 @@ function draw() {
     } else if (gameState == "help") {
         rect(20, 20, width - 40, height - 40)
     }
-
 }
 
 function touchStarted() {
