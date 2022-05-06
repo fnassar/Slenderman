@@ -16,6 +16,9 @@
     /* =============================== */
     .lobby {
         background-color: #222;
+        background-image: url(img/bg2.jpg);
+        background-position: cover;
+        background-repeat: no-repeat;
         display: flex;
         justify-content: space-around;
         flex-direction: column;
