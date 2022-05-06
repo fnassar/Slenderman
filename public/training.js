@@ -11,10 +11,19 @@ let mobilenet;
 let classifier;
 
 //To train each item
-let itemButton;
-let item2Button;
+let page1;
+let page2;
+let page3;
+let page4;
+let page5;
+let page6;
+let page7;
+let page8;
+
 let trainButton;
 let saveButton; 
+
+let label = "loading model"
 
 
 
@@ -28,18 +37,27 @@ function gotResults(error, results){
 
 function modelReady() {
     console.log("model is ready")
+    classifier.load("/models/model.json", customModelReady);
+}
+
+function customModelReady() {
+    console.log("Custom Model is ready")
+    label = "model ready";
+    classifier.classify(gotResults)
 }
 
 function videoReady() {
     console.log("video is ready")
 }
 
-function whileTraining(loss){
-    if(loss == null) {
-        console.log("training complete");
-        classifier.classify(gotResults)
-    }
-}
+// function whileTraining(loss){
+//     if(loss == null) {
+//         //console.log("training complete");
+//         fill(255);
+//         document.getElementById("title").innerHTML = "training complete"
+//         classifier.classify(gotResults)
+//     }
+// }
 
 function setup() {
     //to create canvas and put it in the background
@@ -52,14 +70,14 @@ function setup() {
         audio: false,
 
         ///TO TEST ON PHONE, COMMENT IN THIS PART AND COMMENT OUT THE OTHER ONE 
-        video: {
-            facingMode: {
-                exact: "environment"
-            }
-        }
         // video: {
-        //   facingMode: "user"
-        // } 
+        //     facingMode: {
+        //         exact: "environment"
+        //     }
+        // }
+        video: {
+          facingMode: "user"
+        } 
     };
 
     video_trained = createCapture(constraints);
@@ -70,26 +88,58 @@ function setup() {
     classifier = mobilenet.classification(video_trained, videoReady);
 
 
-    //To train ML5
-    itemButton = createButton('happy');
-    itemButton.mousePressed(function(){
-        classifier.addImage('happy');
-    });
+    // //To train ML5
+    // page1 = createButton('always watches');
+    // page1.mousePressed(function(){
+    //     classifier.addImage('always watches');
+    // });
 
-    item2Button = createButton('sad');
-    item2Button.mousePressed(function(){
-        classifier.addImage('sad');
-    });
+    // page2 = createButton('nonono');
+    // page2.mousePressed(function(){
+    //     classifier.addImage('nonono');
+    // });
 
-    trainButton = createButton('train');
-    trainButton.mousePressed(function(){
-        classifier.train(whileTraining);
-    });
+    // page3 = createButton('leave me alone');
+    // page3.mousePressed(function(){
+    //     classifier.addImage('leave me alone');
+    // });
 
-    saveButton = createButton('save');
-    saveButton.mousePressed(function(){
-        classifier.save();
-    });
+    // page4 = createButton('dont look');
+    // page4.mousePressed(function(){
+    //     classifier.addImage('dont look');
+    // });
+
+    // page5 = createButton('help me');
+    // page5.mousePressed(function(){
+    //     classifier.addImage('help me');
+    // });
+
+    // page6 = createButton('follows');
+    // page6.mousePressed(function(){
+    //     classifier.addImage('follows');
+    // });
+
+    // page7 = createButton('cant run');
+    // page7.mousePressed(function(){
+    //     classifier.addImage('cant run');
+    // });
+
+    // page8 = createButton('forest');
+    // page8.mousePressed(function(){
+    //     classifier.addImage('forest');
+    // });
+
+    // /////// to train and save
+
+    // trainButton = createButton('train');
+    // trainButton.mousePressed(function(){
+    //     classifier.train(whileTraining);
+    // });
+
+    // saveButton = createButton('save');
+    // saveButton.mousePressed(function(){
+    //     classifier.save();
+    // });
 }
 
 function draw() {
