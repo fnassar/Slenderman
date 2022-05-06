@@ -43,8 +43,8 @@ function setup() {
         //     }
         // }
         video: {
-            facingMode: "user"
-        }
+          facingMode: "user"
+        } 
     };
     video = createCapture(constraints);
     //video.size(windowHeight, 480);
