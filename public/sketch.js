@@ -11,6 +11,7 @@ let detector;
 let detections = [];
 
 let gameState;
+let game;
 
 function preload() {
     img = loadImage("/img/cat.jpg");
@@ -54,6 +55,11 @@ function setup() {
 
     //To start game:
     gameState = "instructions";
+    // replace with ml5 objects
+    let objects = ["1", "2", "3", "4", "5", "6", "7", "8"];
+    // replace with hints
+    let hints = ["1", "2", "3", "4", "5", "6", "7", "8"];
+    game = new Game(objects, hints, user);
 }
 
 // // // //to resize window every time there's a change
@@ -97,6 +103,7 @@ function draw() {
     } else if (gameState == "help") {
         rect(20, 20, width - 40, height - 40)
     }
+
 }
 
 function touchStarted() {

@@ -1,5 +1,11 @@
 class Game {
-    Game(posters, players) {
-        posters
-    }
+    Game(objects) {
+            posters
+        }
+        /* 
+            game parts:
+            in main game function:
+                - have a list of objects(to check)
+                - 
+        */
 }
