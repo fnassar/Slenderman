@@ -35,7 +35,8 @@ io.sockets.on('connect', (socket) => {
                     id: socket.id,
                     name: socket.name,
                     room: socket.roomName,
-                    score: 0
+                    score: 0,
+                    winLose: ""
                 }
                 console.log("users:", users);
 
@@ -56,7 +57,8 @@ io.sockets.on('connect', (socket) => {
                 id: socket.id,
                 name: socket.name,
                 room: socket.roomName,
-                score: 0
+                score: 0,
+                winLose: ""
             }
             console.log("new users:", users);
             socket.join(socket.roomName);
@@ -86,7 +88,7 @@ io.sockets.on('connect', (socket) => {
         */
         console.log("data:", data);
 
-        if (data.gameLevel != "8") {
+        if (data.gameLevel != 0) {
 
             if (updates[socket.roomName][data.name]) {
                 updates[socket.roomName][data.name]++;
@@ -104,9 +106,26 @@ io.sockets.on('connect', (socket) => {
             io.to(socket.roomName).emit('newWin', datatosend);
             // change emit objects and update to 8
         } else {
+            users[data.name].score++;
             console.log('lastone');
-
-            io.to(socket.roomName).emit('lastLevel', );
+            let highest = '';
+            maxScore = 0;
+            for (user in users) {
+                console.log("ill kms: ", users);
+                if (users[user].score > maxScore) {
+                    maxScore = users[user].score;
+                    highest = user;
+                }
+            }
+            for (user in users) {
+                if (highest == user) {
+                    users[user].winLose = "win";
+                } else {
+                    users[user].winLose = "lose";
+                }
+            }
+            console.log("ill kms: ", users);
+            io.to(socket.roomName).emit('lastLevel', users);
         }
     })
 })

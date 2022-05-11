@@ -64,8 +64,7 @@ let hint7 = "black and white thinking. let's write something down"
 function gotResults(error, results) {
     if (error) {
         console.error(error);
-    }
-    else if (results[0].confidence>0.90){
+    } else if (results[0].confidence > 0.90) {
         //console.log(results[0].label + (round(results[0].confidence*10)));
         label = results[0].label
     } else {
@@ -299,6 +298,7 @@ function draw() {
             };
             socket.emit('newWin', data);
         } else if (level == 8 && label == "always watches") {
+            level = 0;
             hint = hint8;
 
             let img_h = always_watches.height * (width - 80) / always_watches.width
@@ -343,12 +343,22 @@ function draw() {
         //textSize(50);
         textFont(font);
         let message = "";
-        message += "Level:" + level + "\n";
+        message += "Level :" + level + "\n";
         message += "\n";
-        message += "PLAYERS:\n";
+        message += myname + "\n";
+        message += "\n";
+        message += "Room : " + rooms[myname].room + "\n";
+        message += "\n";
+        message += "\n";
+        message += "\n";
+        message += "PLAYERS : \n";
+        message += "\n";
+        for (user in rooms) {
+            message += user + " : " + rooms[user].score + "\n";
+        }
 
 
-        text(message, width / 2, height - 50);
+        text(message, width / 2, 100);
 
     } else if (gameState == "lose") {
         image(lose, 0, 0, lose.width * height / lose.height, height)
@@ -358,7 +368,8 @@ function draw() {
         textAlign(CENTER, TOP);
         text("YOU LOST", width / 2, height / 2 + 70);
 
-    } else if (gameState == "win") {
+    } else
+    if (gameState == "win") {
         image(win, -win.width / 2, 0, win.width * height / win.height, height);
         fill(200);
         textSize(70);
@@ -376,17 +387,17 @@ function draw() {
 function touchStarted() {
     if ((gameState == "instructions") && (can_start == true)) {
         //if ((mouseX > button_x) && (mouseX < button_x+button_r) && (mouseY > button_y) && (mouseY < button_y+button_r)) {
-        gameState = "start"
-            //}
+        gameState = "start";
+        //}
 
     } else if (gameState == "start") {
         if ((mouseX > button_x) && (mouseX < button_x + button_r) && (mouseY > button_y) && (mouseY < button_y + button_r)) {
-            gameState = "help"
+            gameState = "help";
         }
 
     } else if (gameState == "help") {
         if ((mouseX > button_x) && (mouseX < button_x + button_r) && (mouseY > button_y) && (mouseY < button_y + button_r)) {
-            gameState = "start"
+            gameState = "start";
         }
     }
 
