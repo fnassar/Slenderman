@@ -9,7 +9,7 @@
 
 
 let video_trained;
-let mobilenet;
+let mobilenet_1;
 let classifier;
 
 //To train each item
