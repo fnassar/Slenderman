@@ -32,7 +32,7 @@ function gotResults(error, results){
     if (error) {
         console.error(error);
     }
-    console.log(results)
+    //console.log(results)
     if (results[0].confidence>0.95){
         label = results[0].label
     } else {

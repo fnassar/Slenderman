@@ -2,11 +2,7 @@
 // // open up your console - if everything loaded properly you should see the latest ml5 version
 // //console.log('ml5 version:', ml5.version);
 
-
-
 //To change the camera https://editor.p5js.org/AndreasRef/sketches/HJVgGjmz4
-
-
 
 let video;
 let mobilenet;
@@ -44,7 +40,9 @@ let follows;
 let cant_run;
 let forest;
 let button;
+let button_return;
 let wallpaper;
+let hint_box
 
 //for leaderboard button
 let button_r;
@@ -54,6 +52,8 @@ let effect;
 
 //for font
 let font;
+
+let current_page;
 
 
 
@@ -101,8 +101,10 @@ function setup() {
     cant_run = loadImage("/img/pages/cant_run.JPEG");
     forest = loadImage("/img/pages/forest.JPEG");
     button = loadImage("/img/button.png");
+    button_return = loadImage("/img/button_return.png");
     wallpaper = loadImage("/img/wallpaper.jpg");
     effect = loadImage("/img/effect.png");
+    hint_box = loadImage("/img/hint_box.png");
 
     //to load font
     font = loadFont('/img/Slenderman.ttf');
@@ -137,15 +139,9 @@ function setup() {
 
     //To start game:
     gameState = "instructions";
+    current_page = 1;
 
-    //     //To start game:
-//     gameState = "instructions";
-//     // replace with ml5 objects
-//     let objects = ["1", "2", "3", "4", "5", "6", "7", "8"];
-//     // replace with hints
-//     let hints = ["1", "2", "3", "4", "5", "6", "7", "8"];
-//     game = new Game(objects, hints, user);
-// }
+
 
 }
 
@@ -154,9 +150,9 @@ function draw() {
     //scale(-1.0, 1.0); // flip x-axis backwards
 
     if (gameState == "start") {
-        background(255, 0, 0);
-        //image(video, 0, 0, video.width, video.height); //video on canvas, position, dimensions
-        image(video, 0, 0, width, height); //video on canvas, position, dimensions
+        //background(255, 0, 0);
+        image(video, 0, 0, video.width, video.height); //video on canvas, position, dimensions
+        //image(video, 0, 0, width, height); //video on canvas, position, dimensions
         image(effect, 0, 0, width, height)
 
         //For LEADERBOARD button
@@ -168,6 +164,8 @@ function draw() {
         // text(label, 20, 400, 300, 300);
 
         //["always watches","nonono","leave me alone","dont look","help me","follows","cant run","forest"]}}
+
+        displayHints();
 
         if(label == "always watches"){
             //background(255, 255, 0);
@@ -198,6 +196,7 @@ function draw() {
         }
 
     } else if (gameState == "instructions") {
+
         image(wallpaper, 0, 0, width, height);
         push();
         //translate(0, height);
@@ -206,10 +205,11 @@ function draw() {
         textFont(font);
         text("instructions", 13, 212);
         pop();
+
     } else if (gameState == "help") {
         image(wallpaper, 0, 0, width, height);
-        //button image
-        image(button, button_x, button_y, button_r, button_r);
+        //button return image
+        image(button_return, button_x, button_y, button_r, button_r);
         //textSize(50);
         textFont(font);
         text("insert message here", 10, 50);
@@ -238,4 +238,37 @@ function touchStarted() {
     }
 
     console.log(mouseX + "   " + mouseY)
+<<<<<<< Updated upstream
 }*/
+=======
+}
+
+
+function displayHints() {
+
+    let box_height = hint_box.height*width/hint_box.width;
+    image(hint_box, 0, height-box_height/1.5, width, box_height);
+    let hint;
+
+    if (current_page == 1) {
+        hint = "hola";
+    } else if (current_page == 2) {
+
+    } else if (current_page == 3) {
+        
+    } else if (current_page == 4) {
+        
+    } else if (current_page == 5) {
+        
+    } else if (current_page == 6) {
+        
+    } else if (current_page == 7) {
+        
+    } else if (current_page == 8) {
+        
+    }
+
+
+
+}
+>>>>>>> Stashed changes
