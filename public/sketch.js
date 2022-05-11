@@ -49,7 +49,9 @@ let can_start = false;
 function gotResults(error, results) {
     if (error) {
         console.error(error);
-    } else if (results[0].confidence > 0.9) {
+    }
+    else if (results[0].confidence>0.90){
+        console.log(results[0].label + (round(results[0].confidence*10)));
         label = results[0].label
     } else {
         label = "no object found"
@@ -114,14 +116,14 @@ function setup() {
         audio: false,
 
         ///TO TEST ON PHONE, COMMENT IN THIS PART AND COMMENT OUT THE OTHER ONE 
-        // video: {
-        //     facingMode: {
-        //         exact: "environment"
-        //     }
-        // }
         video: {
-            facingMode: "user"
+            facingMode: {
+                exact: "environment"
+            }
         }
+        // video: {
+        //     facingMode: "user"
+        // }
     };
 
     video = createCapture(constraints);
