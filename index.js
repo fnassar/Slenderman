@@ -86,7 +86,7 @@ io.sockets.on('connect', (socket) => {
         */
         console.log("data:", data);
 
-        if (data.objNum != "8") {
+        if (data.gameLevel != "8") {
 
             if (updates[socket.roomName][data.name]) {
                 updates[socket.roomName][data.name]++;
@@ -104,7 +104,9 @@ io.sockets.on('connect', (socket) => {
             io.to(socket.roomName).emit('newWin', datatosend);
             // change emit objects and update to 8
         } else {
-            io.to(socket.roomName).emit('updateLevel', data.level);
+            console.log('lastone');
+
+            io.to(socket.roomName).emit('lastLevel', );
         }
     })
 })

@@ -49,9 +49,8 @@ let can_start = false;
 function gotResults(error, results) {
     if (error) {
         console.error(error);
-    }
-    else if (results[0].confidence>0.90){
-        console.log(results[0].label + (round(results[0].confidence*10)));
+    } else if (results[0].confidence > 0.90) {
+        // console.log(results[0].label + (round(results[0].confidence * 10)));
         label = results[0].label
     } else {
         label = "no object found"
@@ -116,14 +115,14 @@ function setup() {
         audio: false,
 
         ///TO TEST ON PHONE, COMMENT IN THIS PART AND COMMENT OUT THE OTHER ONE 
-        video: {
-            facingMode: {
-                exact: "environment"
-            }
-        }
         // video: {
-        //     facingMode: "user"
+        //     facingMode: {
+        //         exact: "environment"
+        //     }
         // }
+        video: {
+            facingMode: "user"
+        }
     };
 
     video = createCapture(constraints);
@@ -173,7 +172,7 @@ function draw() {
             let img_h = forest.height * (width - 80) / forest.width
             let y = (height - img_h) / 2;
             image(forest, 40, y, width - 80, img_h);
-            delay.delayTime(3000);
+            // delay.delayTime(3000);
 
             rooms[myname].score++;
             let data = {
@@ -187,7 +186,7 @@ function draw() {
             let img_h = nonono.height * (width - 80) / nonono.width
             let y = (height - img_h) / 2;
             image(nonono, 40, y, width - 80, img_h);
-            delay.delayTime(3000);
+            // delay.delayTime(3000);
 
             rooms[myname].score++;
             let data = {
@@ -202,7 +201,7 @@ function draw() {
             let img_h = leave_me_alone.height * (width - 80) / leave_me_alone.width
             let y = (height - img_h) / 2;
             image(leave_me_alone, 40, y, width - 80, img_h);
-            delay.delayTime(3000);
+            // delay.delayTime(3000);
 
             rooms[myname].score++;
             let data = {
@@ -217,7 +216,7 @@ function draw() {
             let img_h = dont_look.height * (width - 80) / dont_look.width
             let y = (height - img_h) / 2;
             image(dont_look, 40, y, width - 80, img_h);
-            delay.delayTime(3000);
+            // delay.delayTime(3000);
 
             rooms[myname].score++;
             let data = {
@@ -232,7 +231,7 @@ function draw() {
             let img_h = help_me.height * (width - 80) / help_me.width
             let y = (height - img_h) / 2;
             image(help_me, 40, y, width - 80, img_h);
-            delay.delayTime(3000);
+            // delay.delayTime(3000);
 
             rooms[myname].score++;
             let data = {
@@ -247,7 +246,7 @@ function draw() {
             let img_h = follows.height * (width - 80) / follows.width
             let y = (height - img_h) / 2;
             image(follows, 40, y, width - 80, img_h);
-            delay.delayTime(3000);
+            // delay.delayTime(3000);
 
             rooms[myname].score++;
             let data = {
@@ -261,7 +260,7 @@ function draw() {
             let img_h = cant_run.height * (width - 80) / cant_run.width
             let y = (height - img_h) / 2;
             image(cant_run, 40, y, width - 80, img_h);
-            delay.delayTime(3000);
+            // delay.delayTime(3000);
 
             rooms[myname].score++;
             let data = {
@@ -271,11 +270,11 @@ function draw() {
             };
             socket.emit('newWin', data);
         } else if (level == 8 && label == "always watches") {
-
+            level = 0;
             let img_h = always_watches.height * (width - 80) / always_watches.width
             let y = (height - img_h) / 2;
             image(always_watches, 40, y, width - 80, img_h);
-            delay.delayTime(3000);
+            // delay.delayTime(3000);
 
             rooms[myname].score++;
             let data = {
@@ -310,7 +309,13 @@ function draw() {
         image(button_return, button_x, button_y, button_r, button_r);
         //textSize(50);
         textFont(font);
-        text("insert message here", width / 2, height - 50);
+        let message = "";
+        message += "Level:" + level + "\n";
+        message += "\n";
+        message += "PLAYERS:\n";
+
+
+        text(message, width / 2, height - 50);
 
     } else if (gameState == "lose") {
         image(lose, 0, 0, lose.width * height / lose.height, height)
