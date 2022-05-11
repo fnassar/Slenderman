@@ -26,8 +26,9 @@ socket.on('prevupdates', (data) => {
 socket.on('newWin', (data) => {
     console.log(data);
     level++;
-    // emit game stage to show the win then update the level
-    // update game level
+    console.log(level)
+        // emit game stage to show the win then update the level
+        // update game level
 })
 socket.on('updateLevel', (data) => {
     console.log(data);
