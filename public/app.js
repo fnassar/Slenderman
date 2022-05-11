@@ -13,15 +13,9 @@ socket.on('connect', () => {
         socket.emit('userData', data);
     })
     // recieve prev msgs
-socket.on('prevWins', (data) => {
+socket.on('prevupdates', (data) => {
     console.log(data);
-
-    // load prev wins
-    for (let i = 0; i < data.prevWins.length; i++) {
-        let winn = document.createElement('li');
-        winn.innerHTML = data.prevWins[i].name + " : " + data.prevWins[i].msg;
-        logbox.appendChild(winn);
-    }
+    // add instructions page stuff
 })
 
 socket.on('newWin', (data) => {
@@ -30,13 +24,18 @@ socket.on('newWin', (data) => {
     winn.innerHTML = data.name + " : " + data.msg;
     logbox.appendChild(data);
 })
+socket.on('updateLevel', (data) => {
+    console.log(data);
+
+})
 
 window.addEventListener('load', () => {
     let username = document.getElementById('user-name');
     // console.log(sessionStorage.getItem);
     let rooms = {
         name: sessionStorage.getItem('name'),
-        room: sessionStorage.getItem('room')
+        room: sessionStorage.getItem('room'),
+        score: 0
     };
     // if user enters without writting name
     if (!rooms.name || !rooms.room) {
@@ -46,5 +45,5 @@ window.addEventListener('load', () => {
 
     console.log(rooms);
 
-    socket.on('userData', rooms);
+    socket.emit('userData', rooms);
 })

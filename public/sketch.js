@@ -15,6 +15,7 @@ let hints = []; //array of hints and obj number
 // use json
 let found = [];
 let objects = [];
+let level;
 /*
     stages:
     1) find obj 1 (stage1)

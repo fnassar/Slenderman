@@ -1,4 +1,4 @@
-const MAX_USERS_ROOM = 5;
+const MAX_USERS_ROOM = 4;
 //Initialize the express 'app' object
 let express = require('express');
 let app = express();
@@ -13,7 +13,7 @@ let server = http.createServer(app);
 let io = require('socket.io');
 io = new io.Server(server);
 
-let wins = []; // i think keeping a log of what each user did would be helpfull incase they get disconnected
+let updates = {}; // i think keeping a log of what each user did would be helpfull incase they get disconnected
 let rooms = {}; // limit 5 people/room
 let users = {};
 //
@@ -24,6 +24,8 @@ io.sockets.on('connect', (socket) => {
     //
     // get user data
     socket.on('userData', (data) => {
+
+
         // save user name in an array
         socket.name = data.name;
         users[socket.name] = socket.id;
@@ -51,8 +53,8 @@ io.sockets.on('connect', (socket) => {
     })
 
     //send old messages
-    let data = { prevWins: wins }; //change
-    socket.to(socket.roomname).emit('prevWins', data);
+    let data = { prevWins: updates }; //change
+    socket.to(socket.roomname).emit('prevupdates', data);
     // on disconnection
     socket.on('disconnect', () => {
         console.log('connection ended, ', socket.id);
@@ -60,14 +62,27 @@ io.sockets.on('connect', (socket) => {
         delete users[socket.name];
     })
 
-    socket.on('newWin', (data) => { // change
-        wins.push(data); //change
-        console.log("wins:", wins); //change
+    socket.on('newWin', (data) => {
+        // updates the user score depending on username and moves everyone to next stage when data is found
+        /* 
+            data should have:
+            {
+                "game level":"#",
+                usersData:{
+                    users ... : #(score)
+                }
+            }
+        */
+        updates[scores] = data.scores;
+        console.log("updates:", updates);
         io.to(socket.roomname).emit('newWin', data);
-
+        if (data.objNum == "8") {
+            // change emit objects and update to 8
+        } else {
+            io.to(socket.roomname).emit('updateLevel', data.level);
+        }
 
     })
-
 })
 
 //run the createServer
