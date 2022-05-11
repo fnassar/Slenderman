@@ -3,6 +3,7 @@ let socket = io();
 // add a div to log all users new wins
 let logbox = document.getElementById('div_wins_record');
 let rooms = {};
+
 let level = 1;
 let score = 0;
 let myname;
@@ -18,38 +19,47 @@ socket.on('connect', () => {
         socket.emit('userData', data);
     })
     // recieve prev msgs
-socket.on('prevupdates', (data) => {
-    console.log(data);
-    // add instructions page stuff
-})
+    // socket.on('prevupdates', (data) => {
+    //     console.log(data);
+    //     // add instructions page stuff
+    // })
 
 socket.on('newWin', (data) => {
     console.log(data);
-    level++;
+    level = data.level;
+    rooms[data.name].score = data.users[data.name];
+    console.log(rooms);
+
     // emit game stage to show the win then update the level
     // update game level
 })
 socket.on('updateLevel', (data) => {
-    console.log(data);
+    console.log("updateLevel", data);
+    console.log("updateLevel", rooms);
+
+})
+socket.on('newuserData', (data) => {
+    rooms = {};
+    rooms = data; // rewrite
+    console.log(rooms);
 
 })
 
 window.addEventListener('load', () => {
     let username = sessionStorage.getItem('name');
     // console.log(sessionStorage.getItem);
-    rooms[username] = {
+    let current = {
         name: sessionStorage.getItem('name'),
         room: sessionStorage.getItem('room'),
         score: 0
     };
-    console.log(rooms);
     // if user enters without writting name
-    if (!rooms[username] || !rooms[username].room) {
+    if (!current.name || !current.room) {
         console.log("name or room not available");
         window.location = './';
+    } else {
+        myname = current.name;
     }
 
-    console.log(rooms);
-
-    socket.emit('userData', rooms);
+    // socket.emit('userData', current);
 })

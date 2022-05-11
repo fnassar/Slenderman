@@ -1,6 +1,7 @@
 const MAX_USERS_ROOM = 4;
 //Initialize the express 'app' object
 let express = require('express');
+const { use } = require('express/lib/application');
 let app = express();
 app.use('/', express.static('public'));
 
@@ -20,44 +21,55 @@ let users = {};
 // connect to server
 io.sockets.on('connect', (socket) => {
     console.log("we have a new client: ", socket.id);
-    //
-    // get user data
+    // get user data(done)
     socket.on('userData', (data) => {
-
-
         // save user name in an array
         socket.name = data.name;
-        users[socket.name] = socket.id;
-
-        console.log("users:", users);
-
-        // MODIFIED POST CLASS - limiting number of people in room
-        if (rooms[data.room]) {
+        socket.roomName = data.room;
+        if (rooms[socket.roomName] >= 1) {
+            console.log('u');
             if (rooms[data.room] < MAX_USERS_ROOM) {
-                //let the socket join room of choice
-                socket.roomName = data.room; // we will add this data to the socket only after we can verify that there is space
-                updates[socket.name] = 0;
-                socket.join(socket.roomName);
                 rooms[socket.roomName]++;
+                // update user data
+                users[socket.name] = {
+                    id: socket.id,
+                    name: socket.name,
+                    room: socket.roomName,
+                    score: 0
+                }
+                console.log("users:", users);
+
+                // io.to(socket.roomName).emit('newuserData', users);
+                socket.join(socket.roomName);
+                io.to(socket.roomName).emit('newuserData', users);
+                console.log("room", rooms);
             } else {
-                socket.emit('maxUsersReached');
+                io.to(socket.roomName).emit('maxUsersReached');
+
             }
         } else {
             socket.roomName = data.room;
-            socket.join(socket.roomName);
+            updates[socket.roomName] = {};
             rooms[socket.roomName] = 1;
+            // update user data
+            users[socket.name] = {
+                id: socket.id,
+                name: socket.name,
+                room: socket.roomName,
+                score: 0
+            }
+            console.log("new users:", users);
+            socket.join(socket.roomName);
+            io.to(socket.roomName).emit('newuserData', users);
+            console.log("new room", rooms);
         }
-        console.log(rooms);
     })
 
-    //send old messages
-    let data = { prevWins: updates }; //change
-    socket.to(socket.roomname).emit('prevupdates', data);
-    // on disconnection
     socket.on('disconnect', () => {
         console.log('connection ended, ', socket.id);
         rooms[socket.roomName]--;
         delete users[socket.name];
+        console.log("room", rooms);
     })
 
     socket.on('newWin', (data) => {
@@ -74,13 +86,22 @@ io.sockets.on('connect', (socket) => {
         console.log("data:", data);
 
         if (data.objNum != "8") {
-            updates[socket.roomName]++;
-            data.gameLevel++;
+
+            if (updates[socket.roomName][data.name]) {
+                updates[socket.roomName][data.name]++;
+            } else {
+                updates[socket.roomName][data.name] = 1;
+            }
+
+            // data.gameLevel++;
             let datatosend = {
-                users: updates,
+                name: data.name,
+                users: updates[socket.roomName],
                 level: data.gameLevel
             };
-            io.to(socket.roomname).emit('newWin', datatosend);
+            console.log("updates", datatosend);
+            users[data.name].score++;
+            io.to(socket.roomName).emit('newWin', datatosend);
             // change emit objects and update to 8
         } else {
             io.to(socket.roomname).emit('updateLevel', data.level);
@@ -88,6 +109,7 @@ io.sockets.on('connect', (socket) => {
 
     })
 })
+
 
 //run the createServer
 let port = process.env.PORT || 8000;
