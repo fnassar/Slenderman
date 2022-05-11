@@ -2,6 +2,8 @@
 // // open up your console - if everything loaded properly you should see the latest ml5 version
 // //console.log('ml5 version:', ml5.version);
 
+const { text } = require("express");
+
 
 //To change the camera https://editor.p5js.org/AndreasRef/sketches/HJVgGjmz4
 
@@ -9,6 +11,9 @@
 let video;
 let detector;
 let detections = [];
+let hints = []; //array of hints and obj number
+// use json
+let found = [];
 
 let gameState;
 let game;
@@ -101,7 +106,8 @@ function draw() {
     } else if (gameState == "instructions") {
         background(255, 255, 0);
     } else if (gameState == "help") {
-        rect(20, 20, width - 40, height - 40)
+        rect(20, 20, width - 40, height - 40);
+        text(0, 0);
     }
 
 }
