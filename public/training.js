@@ -6,8 +6,10 @@
 //To change the camera https://editor.p5js.org/AndreasRef/sketches/HJVgGjmz4
 
 
+
+
 let video_trained;
-let mobilenet;
+let mobilenet_1;
 let classifier;
 
 //To train each item
@@ -24,7 +26,6 @@ let trainButton;
 let saveButton; 
 
 let label = "loading model"
-
 
 
 function gotResults(error, results){
@@ -155,3 +156,4 @@ function draw() {
     fill(255)
     text(label, 20, 400, 300, 300);
 }
+
