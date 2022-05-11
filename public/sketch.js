@@ -271,7 +271,7 @@ function draw() {
             socket.emit('newWin', data);
         } else if (level == 8 && label == "always watches") {
             level = 0;
-            let img_h = always_watches.height * (width - 80) / always_watches.width
+            let img_h = always_watches.height * (width - 80) / always_watches.width;
             let y = (height - img_h) / 2;
             image(always_watches, 40, y, width - 80, img_h);
             // delay.delayTime(3000);
@@ -310,12 +310,22 @@ function draw() {
         //textSize(50);
         textFont(font);
         let message = "";
-        message += "Level:" + level + "\n";
+        message += "Level :" + level + "\n";
         message += "\n";
-        message += "PLAYERS:\n";
+        message += myname + "\n";
+        message += "\n";
+        message += "Room : " + rooms[myname].room + "\n";
+        message += "\n";
+        message += "\n";
+        message += "\n";
+        message += "PLAYERS : \n";
+        message += "\n";
+        for (user in rooms) {
+            message += user + " : " + rooms[user].score + "\n";
+        }
 
 
-        text(message, width / 2, height - 50);
+        text(message, width / 2, 100);
 
     } else if (gameState == "lose") {
         image(lose, 0, 0, lose.width * height / lose.height, height)
@@ -325,7 +335,8 @@ function draw() {
         textAlign(CENTER, TOP);
         text("YOU LOST", width / 2, height / 2 + 70);
 
-    } else if (gameState == "win") {
+    } else
+    if (gameState == "win") {
         image(win, -win.width / 2, 0, win.width * height / win.height, height);
         fill(200);
         textSize(70);
@@ -343,17 +354,17 @@ function draw() {
 function touchStarted() {
     if ((gameState == "instructions") && (can_start == true)) {
         //if ((mouseX > button_x) && (mouseX < button_x+button_r) && (mouseY > button_y) && (mouseY < button_y+button_r)) {
-        gameState = "start"
-            //}
+        gameState = "start";
+        //}
 
     } else if (gameState == "start") {
         if ((mouseX > button_x) && (mouseX < button_x + button_r) && (mouseY > button_y) && (mouseY < button_y + button_r)) {
-            gameState = "help"
+            gameState = "help";
         }
 
     } else if (gameState == "help") {
         if ((mouseX > button_x) && (mouseX < button_x + button_r) && (mouseY > button_y) && (mouseY < button_y + button_r)) {
-            gameState = "start"
+            gameState = "start";
         }
     }
 

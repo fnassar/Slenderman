@@ -4,7 +4,7 @@ let socket = io();
 let logbox = document.getElementById('div_wins_record');
 let rooms = {};
 
-let level = 1;
+let level = 8;
 let score = 0;
 let myname;
 let gameState;
@@ -35,7 +35,8 @@ socket.on('newWin', (data) => {
     // update game level
 })
 socket.on('lastLevel', (data) => {
-    gameState = data.state;
+    gameState = data[myname].winLose;
+    rooms = data;
 
 })
 socket.on('newuserData', (data) => {
