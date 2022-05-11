@@ -151,73 +151,73 @@ function draw() {
         //["always watches","nonono","leave me alone","dont look","help me","follows","cant run","forest"]}}
 
         displayHints();
-        console.log(rooms);
+        console.log(rooms[myname]);
         if (label != 'no object found') { console.log(level, label); }
-        if (level == 1 && label == "always watches") {
+        if (level == 1 && label == "forest") {
             //background(255, 255, 0);
             image(always_watches, 0, 0, width, height);
-            rooms.score++;
+            rooms[myname].score++;
             let data = {
                 gameLevel: level,
-                score: rooms.score
+                score: rooms[myname].score
             };
             socket.emit('newWin', data);
         } else if (level == 2 && label == "nonono") {
             //background(255, 255, 0);
             image(nonono, 0, 0, width, height);
-            rooms.score++;
+            rooms[myname].score++;
             let data = {
                 gameLevel: level,
-                score: rooms.score
+                score: rooms[myname].score
             };
             socket.emit('newWin', data);
         } else if (level == 3 && label == "leave me alone") {
             //background(255, 255, 0);
             image(leave_me_alone, 0, 0, width, height);
-            rooms.score++;
+            rooms[myname].score++;
             let data = {
                 gameLevel: level,
-                score: rooms.score
+                score: rooms[myname].score
             };
             socket.emit('newWin', data);
         } else if (level == 4 && label == "dont look") {
             image(dont_look, 0, 0, width, height);
-            rooms.score++;
+            rooms[myname].score++;
             let data = {
                 gameLevel: level,
-                score: rooms.score
+                score: rooms[myname].score
             };
             socket.emit('newWin', data);
         } else if (level == 5 && label == "help me") {
             image(help_me, 0, 0, width, height);
-            rooms.score++;
+            rooms[myname].score++;
             let data = {
                 gameLevel: level,
-                score: rooms.score
+                score: rooms[myname].score
             };
             socket.emit('newWin', data);
         } else if (level == 6 && label == "follows") {
             image(follows, 0, 0, width, height);
-            rooms.score++;
+            rooms[myname].score++;
             let data = {
                 gameLevel: level,
-                score: rooms.score
+                score: rooms[myname].score
             };
             socket.emit('newWin', data);
         } else if (level == 7 && label == "cant run") {
             image(cant_run, 0, 0, width, height);
-            rooms.score++;
+            rooms[myname].score++;
             let data = {
                 gameLevel: level,
-                score: rooms.score
+                score: rooms[myname].score
             };
             socket.emit('newWin', data);
-        } else if (level == 8 && label == "forest") {
+        } else if (level == 8 && label == "always watches") {
             image(forest, 0, 0, width, height);
-            rooms.score++;
+            rooms[myname].score++;
             let data = {
                 gameLevel: level,
-                score: rooms.score
+                score: rooms[myname].score
             };
             socket.emit('newWin', data);
         }
