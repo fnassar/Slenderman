@@ -81,6 +81,7 @@ io.sockets.on('connect', (socket) => {
                 usersData:{
                     users ... : #(score)
                 }
+                ...
             }
         */
         console.log("data:", data);
@@ -92,7 +93,6 @@ io.sockets.on('connect', (socket) => {
             } else {
                 updates[socket.roomName][data.name] = 1;
             }
-
             // data.gameLevel++;
             let datatosend = {
                 name: data.name,
@@ -106,7 +106,6 @@ io.sockets.on('connect', (socket) => {
         } else {
             io.to(socket.roomName).emit('updateLevel', data.level);
         }
-
     })
 })
 
