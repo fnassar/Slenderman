@@ -31,6 +31,8 @@ let wallpaper;
 let hint_box
 let lose;
 
+let text_instructions = "Have you played a treasure hunt before? Let's make a trauma out of your favorite childhood game. \n Find the 8 pages hidden in this classroom  "
+
 
 //for leaderboard button
 let button_r;
@@ -50,7 +52,7 @@ function gotResults(error, results) {
     if (error) {
         console.error(error);
     }
-    else if (results[0].confidence>0.85 ){
+    else if (results[0].confidence>0.90 ){
         label = results[0].label
     } else {
         label = "no object found"
@@ -285,7 +287,7 @@ function draw() {
         textFont(font);
         text("instructions", width/2, 212);
         textSize(10);
-        text("instructions", 0, 280, width, height);
+        text(text_instructions, 0, 280, width, height);
 
 
 

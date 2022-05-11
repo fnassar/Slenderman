@@ -43,7 +43,7 @@ function gotResults(error, results){
 
 function modelReady() {
     console.log("model is ready")
-    classifier.load("/models/model.json", customModelReady);
+    classifier.load("/models/model2.json", customModelReady);
 }
 
 function customModelReady() {
