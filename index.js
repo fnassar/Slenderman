@@ -36,7 +36,7 @@ io.sockets.on('connect', (socket) => {
             if (rooms[data.room] < MAX_USERS_ROOM) {
                 //let the socket join room of choice
                 socket.roomName = data.room; // we will add this data to the socket only after we can verify that there is space
-                //updates[];
+                updates[socket.name] = 0;
                 socket.join(socket.roomName);
                 rooms[socket.roomName]++;
             } else {
@@ -71,10 +71,16 @@ io.sockets.on('connect', (socket) => {
                 }
             }
         */
-        console.log("updates:", updates);
+        console.log("data:", data);
 
-        io.to(socket.roomname).emit('newWin', data);
-        if (data.objNum == "8") {
+        if (data.objNum != "8") {
+            updates[socket.roomName]++;
+            data.gameLevel++;
+            let datatosend = {
+                users: updates,
+                level: data.gameLevel
+            };
+            io.to(socket.roomname).emit('newWin', datatosend);
             // change emit objects and update to 8
         } else {
             io.to(socket.roomname).emit('updateLevel', data.level);
