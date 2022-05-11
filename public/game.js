@@ -1,6 +1,6 @@
 class Game {
-    Game(objects) {
-            posters
+    Game() {
+
         }
         /* 
             game parts:

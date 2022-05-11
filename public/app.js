@@ -16,7 +16,7 @@ socket.on('connect', () => {
 socket.on('prevWins', (data) => {
     console.log(data);
 
-    // load prev chats
+    // load prev wins
     for (let i = 0; i < data.prevWins.length; i++) {
         let winn = document.createElement('li');
         winn.innerHTML = data.prevWins[i].name + " : " + data.prevWins[i].msg;
