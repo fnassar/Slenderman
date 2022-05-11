@@ -9,7 +9,6 @@ let http = require('http');
 let server = http.createServer(app);
 
 //Initialize socket.io
-//Initialize socket.io
 let io = require('socket.io');
 io = new io.Server(server);
 
