@@ -8,6 +8,8 @@ let video;
 let mobilenet;
 let detector;
 let detections = [];
+let hints = [];
+
 
 let gameState;
 let game;
@@ -41,7 +43,7 @@ let current_page;
 
 
 
-function gotResults(error, results){
+function gotResults(error, results) {
     if (error) {
         console.error(error);
     }
@@ -59,13 +61,13 @@ function modelReady() {
 }
 
 function customModelReady() {
-    console.log("Custom Model is ready")
+    console.log("Custom Model is ready");
     label = "model ready";
     detector.classify(gotResults)
 }
 
 function videoReady() {
-    console.log("video is ready")
+    console.log("video is ready");
 }
 
 
@@ -110,8 +112,8 @@ function setup() {
         //     }
         // }
         video: {
-          facingMode: "user"
-        } 
+            facingMode: "user"
+        }
     };
 
     video = createCapture(constraints);
@@ -119,7 +121,7 @@ function setup() {
 
     //COCOSD
     mobilenet = ml5.featureExtractor('MobileNet', modelReady);
-    detector = mobilenet.classification(video, {numLabels: 8} , videoReady);
+    detector = mobilenet.classification(video, { numLabels: 8 }, videoReady);
 
     //To start game:
     gameState = "instructions";
@@ -151,8 +153,9 @@ function draw() {
         //["always watches","nonono","leave me alone","dont look","help me","follows","cant run","forest"]}}
 
         displayHints();
-
-        if(label == "always watches"){
+        console.log(rooms);
+        if (label != 'no object found') { console.log(level, label); }
+        if (level == 1 && label == "always watches") {
             //background(255, 255, 0);
             let img_h = always_watches.height * (width-80) / always_watches.width
             let y = (height-img_h)/2;
@@ -194,6 +197,71 @@ function draw() {
             let img_h = forest.height * (width-80) / forest.width
             let y = (height-img_h)/2;
             image(forest, 40, y, width-80, img_h);
+            image(always_watches, 0, 0, width, height);
+            rooms.score++;
+            let data = {
+                gameLevel: level,
+                score: rooms.score
+            };
+            socket.emit('newWin', data);
+        } else if (level == 2 && label == "nonono") {
+            //background(255, 255, 0);
+            image(nonono, 0, 0, width, height);
+            rooms.score++;
+            let data = {
+                gameLevel: level,
+                score: rooms.score
+            };
+            socket.emit('newWin', data);
+        } else if (level == 3 && label == "leave me alone") {
+            //background(255, 255, 0);
+            image(leave_me_alone, 0, 0, width, height);
+            rooms.score++;
+            let data = {
+                gameLevel: level,
+                score: rooms.score
+            };
+            socket.emit('newWin', data);
+        } else if (level == 4 && label == "dont look") {
+            image(dont_look, 0, 0, width, height);
+            rooms.score++;
+            let data = {
+                gameLevel: level,
+                score: rooms.score
+            };
+            socket.emit('newWin', data);
+        } else if (level == 5 && label == "help me") {
+            image(help_me, 0, 0, width, height);
+            rooms.score++;
+            let data = {
+                gameLevel: level,
+                score: rooms.score
+            };
+            socket.emit('newWin', data);
+        } else if (level == 6 && label == "follows") {
+            image(follows, 0, 0, width, height);
+            rooms.score++;
+            let data = {
+                gameLevel: level,
+                score: rooms.score
+            };
+            socket.emit('newWin', data);
+        } else if (level == 7 && label == "cant run") {
+            image(cant_run, 0, 0, width, height);
+            rooms.score++;
+            let data = {
+                gameLevel: level,
+                score: rooms.score
+            };
+            socket.emit('newWin', data);
+        } else if (level == 8 && label == "forest") {
+            image(forest, 0, 0, width, height);
+            rooms.score++;
+            let data = {
+                gameLevel: level,
+                score: rooms.score
+            };
+            socket.emit('newWin', data);
         }
 
     } else if (gameState == "instructions") {
@@ -224,16 +292,16 @@ function draw() {
 function touchStarted() {
     if (gameState == "instructions") {
         //if ((mouseX > button_x) && (mouseX < button_x+button_r) && (mouseY > button_y) && (mouseY < button_y+button_r)) {
-            gameState = "start"
-        //}
+        gameState = "start"
+            //}
 
     } else if (gameState == "start") {
-        if ((mouseX > button_x) && (mouseX < button_x+button_r) && (mouseY > button_y) && (mouseY < button_y+button_r)) {
+        if ((mouseX > button_x) && (mouseX < button_x + button_r) && (mouseY > button_y) && (mouseY < button_y + button_r)) {
             gameState = "help"
         }
 
     } else if (gameState == "help") {
-        if ((mouseX > button_x) && (mouseX < button_x+button_r) && (mouseY > button_y) && (mouseY < button_y+button_r)) {
+        if ((mouseX > button_x) && (mouseX < button_x + button_r) && (mouseY > button_y) && (mouseY < button_y + button_r)) {
             gameState = "start"
         }
     }

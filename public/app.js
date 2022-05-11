@@ -2,6 +2,9 @@
 let socket = io();
 // add a div to log all users new wins
 let logbox = document.getElementById('div_wins_record');
+let rooms = {};
+let level = 1;
+let score = 0;
 //listen for confirmation
 socket.on('connect', () => {
         console.log("client connected via sockets");
@@ -20,6 +23,7 @@ socket.on('prevupdates', (data) => {
 
 socket.on('newWin', (data) => {
     console.log(data);
+
     // emit game stage to show the win then update the level
     // update game level
 })
@@ -31,7 +35,7 @@ socket.on('updateLevel', (data) => {
 window.addEventListener('load', () => {
     let username = document.getElementById('user-name');
     // console.log(sessionStorage.getItem);
-    let rooms = {
+    rooms = {
         name: sessionStorage.getItem('name'),
         room: sessionStorage.getItem('room'),
         score: 0
