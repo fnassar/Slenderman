@@ -59,7 +59,7 @@ function setup() {
     let objects = ["1", "2", "3", "4", "5", "6", "7", "8"];
     // replace with hints
     let hints = ["1", "2", "3", "4", "5", "6", "7", "8"];
-    game = new Game(objects, hints, user);
+    // game = new Game(objects, hints, user);
 }
 
 // // // //to resize window every time there's a change
