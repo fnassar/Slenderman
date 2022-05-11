@@ -155,107 +155,110 @@ function draw() {
         displayHints();
         console.log(rooms[myname]);
         if (label != 'no object found') { console.log(level, label); }
-        if (level == 1 && label == "forest") {
-            //background(255, 255, 0);
-            let img_h = always_watches.height * (width-80) / always_watches.width
-            let y = (height-img_h)/2;
-            image(always_watches, 40, y, width-80, img_h);
-        }
-        else if(label == "nonono"){
-            //background(255, 255, 0);
-            let img_h = nonono.height * (width-80) / nonono.width
-            let y = (height-img_h)/2;
-            image(nonono, 40, y, width-80, img_h);
-        }
-        else if(label == "leave me alone"){
-            //background(255, 255, 0);
-            let img_h = leave_me_alone.height * (width-80) / leave_me_alone.width
-            let y = (height-img_h)/2;
-            image(leave_me_alone, 40, y, width-80, img_h);
-        }
-        else if(label == "dont look") {
-            let img_h = dont_look.height * (width-80) / dont_look.width
-            let y = (height-img_h)/2;
-            image(dont_look, 40, y, width-80, img_h);
-        }
-        else if(label == "help me") {
-            let img_h = help_me.height * (width-80) / help_me.width
-            let y = (height-img_h)/2;
-            image(help_me, 40, y, width-80, img_h);
-        }
-        else if(label == "follows") {
-            let img_h = follows.height * (width-80) / follows.width
-            let y = (height-img_h)/2;
-            image(follows, 40, y, width-80, img_h);
-        }
-        else if(label == "cant run") {
-            let img_h = cant_run.height * (width-80) / cant_run.width
-            let y = (height-img_h)/2;
-            image(cant_run, 40, y, width-80, img_h);
-        }
-        else if(label == "forest") {
+
+
+
+        if(level == 1 && label == "forest") {
+
             let img_h = forest.height * (width-80) / forest.width
             let y = (height-img_h)/2;
             image(forest, 40, y, width-80, img_h);
-            image(always_watches, 0, 0, width, height);
+
             rooms[myname].score++;
             let data = {
                 gameLevel: level,
                 score: rooms[myname].score
             };
             socket.emit('newWin', data);
-        } else if (level == 2 && label == "nonono") {
-            //background(255, 255, 0);
-            image(nonono, 0, 0, width, height);
+        } 
+        else if (level == 2 && label == "nonono") {
+
+            let img_h = nonono.height * (width-80) / nonono.width
+            let y = (height-img_h)/2;
+            image(nonono, 40, y, width-80, img_h);
+
             rooms[myname].score++;
             let data = {
                 gameLevel: level,
                 score: rooms[myname].score
             };
             socket.emit('newWin', data);
-        } else if (level == 3 && label == "leave me alone") {
-            //background(255, 255, 0);
-            image(leave_me_alone, 0, 0, width, height);
+
+        } 
+        else if (level == 3 && label == "leave me alone") {
+
+            let img_h = leave_me_alone.height * (width-80) / leave_me_alone.width
+            let y = (height-img_h)/2;
+            image(leave_me_alone, 40, y, width-80, img_h);
+
             rooms[myname].score++;
             let data = {
                 gameLevel: level,
                 score: rooms[myname].score
             };
             socket.emit('newWin', data);
-        } else if (level == 4 && label == "dont look") {
-            image(dont_look, 0, 0, width, height);
+
+        } 
+        else if (level == 4 && label == "dont look") {
+
+            let img_h = dont_look.height * (width-80) / dont_look.width
+            let y = (height-img_h)/2;
+            image(dont_look, 40, y, width-80, img_h);
+
             rooms[myname].score++;
             let data = {
                 gameLevel: level,
                 score: rooms[myname].score
             };
             socket.emit('newWin', data);
-        } else if (level == 5 && label == "help me") {
-            image(help_me, 0, 0, width, height);
+
+        } 
+        else if (level == 5 && label == "help me") {
+
+            let img_h = help_me.height * (width-80) / help_me.width
+            let y = (height-img_h)/2;
+            image(help_me, 40, y, width-80, img_h);
+
             rooms[myname].score++;
             let data = {
                 gameLevel: level,
                 score: rooms[myname].score
             };
             socket.emit('newWin', data);
-        } else if (level == 6 && label == "follows") {
-            image(follows, 0, 0, width, height);
+
+        } 
+        else if (level == 6 && label == "follows") {
+
+            let img_h = follows.height * (width-80) / follows.width
+            let y = (height-img_h)/2;
+            image(follows, 40, y, width-80, img_h);
+
             rooms[myname].score++;
             let data = {
                 gameLevel: level,
                 score: rooms[myname].score
             };
             socket.emit('newWin', data);
-        } else if (level == 7 && label == "cant run") {
-            image(cant_run, 0, 0, width, height);
+        } 
+        else if (level == 7 && label == "cant run") {
+
+            let img_h = cant_run.height * (width-80) / cant_run.width
+            let y = (height-img_h)/2;
+            image(cant_run, 40, y, width-80, img_h);
+
             rooms[myname].score++;
             let data = {
                 gameLevel: level,
                 score: rooms[myname].score
             };
             socket.emit('newWin', data);
-        } else if (level == 8 && label == "always watches") {
-            image(forest, 0, 0, width, height);
+        } 
+        else if (level == 8 && label == "always watches") {
+
+            let img_h = always_watches.height * (width-80) / always_watches.width
+            let y = (height-img_h)/2;
+            image(always_watches, 40, y, width-80, img_h);
+
             rooms[myname].score++;
             let data = {
                 gameLevel: level,
@@ -286,8 +289,6 @@ function draw() {
     }
 
 }
-
-
 
 function touchStarted() {
     if (gameState == "instructions") {
