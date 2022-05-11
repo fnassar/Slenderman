@@ -29,7 +29,7 @@ let wallpaper;
 let hint_box
 let lose;
 
-let text_instructions = "Have you played a treasure hunt before? Let's make a trauma out of your favorite childhood game. \n Find the 8 pages hidden in this classroom  "
+let text_instructions = "Have you played a treasure hunt before? \n\n Let's make a trauma out of your favorite childhood game. \n \n Follow the hints and find the 8 pages hidden in this place. \n\nBut hurry! Because slemnderman is looking for you."
 
 
 //for leaderboard button
@@ -45,12 +45,24 @@ let current_page;
 //to start game
 let can_start = false;
 
+//hints
+let hint = "The IM department has cutting-edge technology. We're so lucky!"
+let hint1 = "using my xbox controller and looking through the window, y'all look like sims"
+let hint2 = "nothing like a book and pizza on a cold day of may"
+let hint3 = "splish, splash, crash, trash"
+let hint4 = "Jack b du, where are u"
+let hint5 = "netflix and chill?, send some recs"
+let hint6 = "i wonder if the koala kids are already here"
+let hint7 = "balck and white thinking. let's write something down"
+
+hint = hint1;
+
 
 function gotResults(error, results) {
     if (error) {
         console.error(error);
     } else if (results[0].confidence > 0.90) {
-        // console.log(results[0].label + (round(results[0].confidence * 10)));
+        //console.log(results[0].label + (round(results[0].confidence*10)));
         label = results[0].label
     } else {
         label = "no object found"
@@ -134,7 +146,7 @@ function setup() {
 
     //To start game:
     gameState = "instructions";
-    current_page = 1;
+    //current_page = 1;
 
 
 
@@ -154,20 +166,15 @@ function draw() {
         //For LEADERBOARD button
         image(button, button_x, button_y, button_r, button_r);
 
-        // fill(0);
-        // rect(20, 400, 100, 20);
-        // fill(255)
-        // text(label, 20, 400, 300, 300);
-
-        //["always watches","nonono","leave me alone","dont look","help me","follows","cant run","forest"]}}
-
+        //for hints
         displayHints();
         //console.log(rooms[myname]);
-        if (label != 'no object found') { console.log(level, label); }
-
+        //if (label != 'no object found') { console.log(level, label); }
 
 
         if (level == 1 && label == "forest") {
+            hint = hint1;
+
             level++;
             let img_h = forest.height * (width - 80) / forest.width
             let y = (height - img_h) / 2;
@@ -182,6 +189,8 @@ function draw() {
             };
             socket.emit('newWin', data);
         } else if (level == 2 && label == "nonono") {
+            hint = hint2;
+
             level++;
             let img_h = nonono.height * (width - 80) / nonono.width
             let y = (height - img_h) / 2;
@@ -197,6 +206,8 @@ function draw() {
             socket.emit('newWin', data);
 
         } else if (level == 3 && label == "leave me alone") {
+            hint = hint3;
+
             level++;
             let img_h = leave_me_alone.height * (width - 80) / leave_me_alone.width
             let y = (height - img_h) / 2;
@@ -212,6 +223,8 @@ function draw() {
             socket.emit('newWin', data);
 
         } else if (level == 4 && label == "dont look") {
+            hint = hint4;
+
             level++;
             let img_h = dont_look.height * (width - 80) / dont_look.width
             let y = (height - img_h) / 2;
@@ -227,6 +240,8 @@ function draw() {
             socket.emit('newWin', data);
 
         } else if (level == 5 && label == "help me") {
+            hint = hint5;
+
             level++;
             let img_h = help_me.height * (width - 80) / help_me.width
             let y = (height - img_h) / 2;
@@ -242,6 +257,8 @@ function draw() {
             socket.emit('newWin', data);
 
         } else if (level == 6 && label == "follows") {
+            hint = hint6;
+
             level++;
             let img_h = follows.height * (width - 80) / follows.width
             let y = (height - img_h) / 2;
@@ -256,6 +273,8 @@ function draw() {
             };
             socket.emit('newWin', data);
         } else if (level == 7 && label == "cant run") {
+            hint = hint7;
+
             level++;
             let img_h = cant_run.height * (width - 80) / cant_run.width
             let y = (height - img_h) / 2;
@@ -271,7 +290,9 @@ function draw() {
             socket.emit('newWin', data);
         } else if (level == 8 && label == "always watches") {
             level = 0;
-            let img_h = always_watches.height * (width - 80) / always_watches.width;
+            hint = hint8;
+
+            let img_h = always_watches.height * (width - 80) / always_watches.width
             let y = (height - img_h) / 2;
             image(always_watches, 40, y, width - 80, img_h);
             // delay.delayTime(3000);
@@ -291,16 +312,19 @@ function draw() {
         textAlign(CENTER, TOP);
         textSize(50);
         textFont(font);
-        text("instructions", width / 2, 212);
-        textSize(10);
-        text(text_instructions, 0, 280, width, height);
+        fill(180);
+        text("instructions", width / 2, 120);
+        textSize(25);
+        fill(0);
+        text(text_instructions, 0, 210, width, height);
 
 
 
         if (can_start == true) {
-            text("touch anywere to continue", width / 2, height - 200);
+            textSize(20);
+            text("touch anywere to continue", width / 2, height - 150);
         } else if (can_start == false) {
-            text("loading...", width / 2, height - 200);
+            text("loading...", width / 2, height - 150);
         }
 
     } else if (gameState == "help") {
@@ -376,29 +400,28 @@ function displayHints() {
 
     let box_height = hint_box.height * width / hint_box.width
     image(hint_box, 0, height - box_height / 1.5, width, box_height);
-    let hint;
 
-    if (current_page == 1) {
-        hint = "hint 1";
-    } else if (current_page == 2) {
-        hint = "hint 2";
-    } else if (current_page == 3) {
-        hint = "hint 3";
-    } else if (current_page == 4) {
-        hint = "hint 4";
-    } else if (current_page == 5) {
-        hint = "hint 5";
-    } else if (current_page == 6) {
-        hint = "hint 6";
-    } else if (current_page == 7) {
-        hint = "hint 7";
-    } else if (current_page == 8) {
-        hint = "hint 8";
-    }
+    // if (current_page == 1) {
+    //     hint = "hint 1";
+    // } else if (current_page == 2) {
+    //     hint = "hint 2";
+    // } else if (current_page == 3) {
+    //     hint = "hint 3";
+    // } else if (current_page == 4) {
+    //     hint = "hint 4";
+    // } else if (current_page == 5) {
+    //     hint = "hint 5";
+    // } else if (current_page == 6) {
+    //     hint = "hint 6";
+    // } else if (current_page == 7) {
+    //     hint = "hint 7";
+    // } else if (current_page == 8) {
+    //     hint = "hint 8";
+    // }
 
     textFont(font);
     textSize(20);
     textAlign(CENTER, TOP);
-    text(hint, width / 2, height - box_height / 2);
+    text(hint, 0, height - box_height / 2, width, hint_box.height);
 
 }
