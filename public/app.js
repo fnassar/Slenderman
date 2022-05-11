@@ -34,7 +34,7 @@ socket.on('newWin', (data) => {
     // emit game stage to show the win then update the level
     // update game level
 })
-socket.on('updateLevel', (data) => {
+socket.on('lastLevel', (data) => {
     console.log("updateLevel", data);
     console.log("updateLevel", rooms);
 

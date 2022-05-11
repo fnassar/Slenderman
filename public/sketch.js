@@ -171,7 +171,7 @@ function draw() {
             let img_h = forest.height * (width - 80) / forest.width
             let y = (height - img_h) / 2;
             image(forest, 40, y, width - 80, img_h);
-            delay(3000);
+            delay.delayTime(3000);
 
             rooms[myname].score++;
             let data = {
@@ -185,7 +185,7 @@ function draw() {
             let img_h = nonono.height * (width - 80) / nonono.width
             let y = (height - img_h) / 2;
             image(nonono, 40, y, width - 80, img_h);
-            delay(3000);
+            delay.delayTime(3000);
 
             rooms[myname].score++;
             let data = {
@@ -200,7 +200,7 @@ function draw() {
             let img_h = leave_me_alone.height * (width - 80) / leave_me_alone.width
             let y = (height - img_h) / 2;
             image(leave_me_alone, 40, y, width - 80, img_h);
-            delay(3000);
+            delay.delayTime(3000);
 
             rooms[myname].score++;
             let data = {
@@ -215,7 +215,7 @@ function draw() {
             let img_h = dont_look.height * (width - 80) / dont_look.width
             let y = (height - img_h) / 2;
             image(dont_look, 40, y, width - 80, img_h);
-            delay(3000);
+            delay.delayTime(3000);
 
             rooms[myname].score++;
             let data = {
@@ -230,7 +230,7 @@ function draw() {
             let img_h = help_me.height * (width - 80) / help_me.width
             let y = (height - img_h) / 2;
             image(help_me, 40, y, width - 80, img_h);
-            delay(3000);
+            delay.delayTime(3000);
 
             rooms[myname].score++;
             let data = {
@@ -245,7 +245,7 @@ function draw() {
             let img_h = follows.height * (width - 80) / follows.width
             let y = (height - img_h) / 2;
             image(follows, 40, y, width - 80, img_h);
-            delay(3000);
+            delay.delayTime(3000);
 
             rooms[myname].score++;
             let data = {
@@ -259,7 +259,7 @@ function draw() {
             let img_h = cant_run.height * (width - 80) / cant_run.width
             let y = (height - img_h) / 2;
             image(cant_run, 40, y, width - 80, img_h);
-            delay(3000);
+            delay.delayTime(3000);
 
             rooms[myname].score++;
             let data = {
@@ -273,7 +273,7 @@ function draw() {
             let img_h = always_watches.height * (width - 80) / always_watches.width
             let y = (height - img_h) / 2;
             image(always_watches, 40, y, width - 80, img_h);
-            delay(3000);
+            delay.delayTime(3000);
 
             rooms[myname].score++;
             let data = {
