@@ -20,9 +20,8 @@ socket.on('prevupdates', (data) => {
 
 socket.on('newWin', (data) => {
     console.log(data);
-    let winn = document.createElement('li');
-    winn.innerHTML = data.name + " : " + data.msg;
-    logbox.appendChild(data);
+    // emit game stage to show the win then update the level
+    // update game level
 })
 socket.on('updateLevel', (data) => {
     console.log(data);
