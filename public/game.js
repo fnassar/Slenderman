@@ -1,7 +1,5 @@
 class Game {
-    Game() {
-
-        }
+    Game() {}
         /* 
             game parts:
             in main game function:

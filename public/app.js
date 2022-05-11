@@ -49,7 +49,7 @@ window.addEventListener('load', () => {
 
     socket.on('userData', rooms);
 
-    username.innerHTML = sessionStorage.getItem('name');
+    // username.innerHTML = sessionStorage.getItem('name');
 
     let newWin = document.getElementById('newWin');
     let logWinsDiv = document.getElementById('div_wins_record');
