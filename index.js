@@ -36,7 +36,7 @@ io.sockets.on('connect', (socket) => {
             if (rooms[data.room] < MAX_USERS_ROOM) {
                 //let the socket join room of choice
                 socket.roomName = data.room; // we will add this data to the socket only after we can verify that there is space
-                // updates[]
+                //updates[];
                 socket.join(socket.roomName);
                 rooms[socket.roomName]++;
             } else {
