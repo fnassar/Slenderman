@@ -27,23 +27,25 @@ let saveButton;
 
 let label = "loading model"
 
+let confidence_value = 0.95;
+
 
 function gotResults(error, results){
     if (error) {
         console.error(error);
     }
     //console.log(results)
-    if (results[0].confidence>0.95){
-        label = results[0].label
+    if (results[0].confidence>confidence_value){
+        label = results[0].label + " " + confidence_value
     } else {
-        label = "no object found"
+        label = "no object found" + " " + confidence_value
     }
     classifier.classify(gotResults);
 }
 
 function modelReady() {
     console.log("model is ready")
-    classifier.load("/models/model2.json", customModelReady);
+    classifier.load("/models/model.json", customModelReady);
 }
 
 function customModelReady() {
@@ -155,5 +157,17 @@ function draw() {
     rect(20, 400, 100, 20);
     fill(255)
     text(label, 20, 400, 300, 300);
+
+    rect(0, height-50, 50, 50);
+    rect(width-50, height-50, 50, 50);
+}
+
+function touchStarted(){
+    if ((mouseX<50)&&(mouseX>0)&&(mouseY<height)&&(mouseY>height-50)){
+        confidence_value -= 0.01;
+    }
+    if ((mouseX<width)&&(mouseX>width-50)&&(mouseY<height)&&(mouseY>height-50)){
+        confidence_value += 0.01;
+    }
 }
 
