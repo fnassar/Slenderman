@@ -14,7 +14,21 @@ let detections = [];
 let hints = []; //array of hints and obj number
 // use json
 let found = [];
+let objects = [];
+/*
+    stages:
+    1) find obj 1 (stage1)
+    2) use sockets to tell everyone obj 1 was found and update scores(stage2)
+    3) go back to finding obj 2
+    ...
+    4) obj 8 is displayed (add timer?)
+    5) if obj 8 is found players all win 
+        otherwise only player with highest score wins
+    6) display happy creepy face to winner
+    7) display slender man glitch to losers
 
+
+*/
 let gameState;
 let game;
 

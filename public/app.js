@@ -51,14 +51,14 @@ window.addEventListener('load', () => {
 
     // username.innerHTML = sessionStorage.getItem('name');
 
-    let newWin = document.getElementById('newWin');
-    let logWinsDiv = document.getElementById('div_wins_record');
-    newWin.addEventListener('click', () => {
-        let name = sessionStorage.getItem('name');
-        chatObj = {
-            'name': name,
-            'msg': "msg"
-        }
-        socket.emit('newWin', chatObj);
-    })
+    // let newWin = document.getElementById('newWin');
+    // let logWinsDiv = document.getElementById('div_wins_record');
+    // newWin.addEventListener('click', () => {
+    //     let name = sessionStorage.getItem('name');
+    //     chatObj = {
+    //         'name': name,
+    //         'msg': "msg"
+    //     }
+    //     socket.emit('newWin', chatObj);
+    // })
 })
