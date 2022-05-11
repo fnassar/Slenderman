@@ -7,6 +7,7 @@ let rooms = {};
 let level = 1;
 let score = 0;
 let myname;
+let gameState;
 //listen for confirmation
 socket.on('connect', () => {
         console.log("client connected via sockets");

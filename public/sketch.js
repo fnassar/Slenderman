@@ -10,8 +10,6 @@ let detector;
 let detections = [];
 let hints = [];
 
-
-let gameState;
 let game;
 
 let label = "loading model";
@@ -43,14 +41,13 @@ let font;
 let current_page;
 
 //to start game
-let can_start = false; 
+let can_start = false;
 
 
 function gotResults(error, results) {
     if (error) {
         console.error(error);
-    }
-    else if (results[0].confidence>0.85 ){
+    } else if (results[0].confidence > 0.85) {
         label = results[0].label
     } else {
         label = "no object found"
@@ -67,7 +64,7 @@ function customModelReady() {
     console.log("Custom Model is ready");
     label = "model ready";
     detector.classify(gotResults)
-    
+
     can_start = true;
 
 }
@@ -172,6 +169,7 @@ function draw() {
             let img_h = forest.height * (width - 80) / forest.width
             let y = (height - img_h) / 2;
             image(forest, 40, y, width - 80, img_h);
+            delay(3000);
 
             rooms[myname].score++;
             let data = {
@@ -185,6 +183,7 @@ function draw() {
             let img_h = nonono.height * (width - 80) / nonono.width
             let y = (height - img_h) / 2;
             image(nonono, 40, y, width - 80, img_h);
+            delay(3000);
 
             rooms[myname].score++;
             let data = {
@@ -199,6 +198,7 @@ function draw() {
             let img_h = leave_me_alone.height * (width - 80) / leave_me_alone.width
             let y = (height - img_h) / 2;
             image(leave_me_alone, 40, y, width - 80, img_h);
+            delay(3000);
 
             rooms[myname].score++;
             let data = {
@@ -213,6 +213,7 @@ function draw() {
             let img_h = dont_look.height * (width - 80) / dont_look.width
             let y = (height - img_h) / 2;
             image(dont_look, 40, y, width - 80, img_h);
+            delay(3000);
 
             rooms[myname].score++;
             let data = {
@@ -227,6 +228,7 @@ function draw() {
             let img_h = help_me.height * (width - 80) / help_me.width
             let y = (height - img_h) / 2;
             image(help_me, 40, y, width - 80, img_h);
+            delay(3000);
 
             rooms[myname].score++;
             let data = {
@@ -241,6 +243,7 @@ function draw() {
             let img_h = follows.height * (width - 80) / follows.width
             let y = (height - img_h) / 2;
             image(follows, 40, y, width - 80, img_h);
+            delay(3000);
 
             rooms[myname].score++;
             let data = {
@@ -254,6 +257,7 @@ function draw() {
             let img_h = cant_run.height * (width - 80) / cant_run.width
             let y = (height - img_h) / 2;
             image(cant_run, 40, y, width - 80, img_h);
+            delay(3000);
 
             rooms[myname].score++;
             let data = {
@@ -267,6 +271,7 @@ function draw() {
             let img_h = always_watches.height * (width - 80) / always_watches.width
             let y = (height - img_h) / 2;
             image(always_watches, 40, y, width - 80, img_h);
+            delay(3000);
 
             rooms[myname].score++;
             let data = {
@@ -283,16 +288,16 @@ function draw() {
         textAlign(CENTER, TOP);
         textSize(50);
         textFont(font);
-        text("instructions", width/2, 212);
+        text("instructions", width / 2, 212);
         textSize(10);
         text("instructions", 0, 280, width, height);
 
 
 
-        if (can_start == true){
-            text("touch anywere to continue", width/2, height-200);
+        if (can_start == true) {
+            text("touch anywere to continue", width / 2, height - 200);
         } else if (can_start == false) {
-            text("loading...", width/2, height-200);
+            text("loading...", width / 2, height - 200);
         }
 
     } else if (gameState == "help") {
@@ -301,33 +306,33 @@ function draw() {
         image(button_return, button_x, button_y, button_r, button_r);
         //textSize(50);
         textFont(font);
-        text("insert message here", width/2, height-50);
-        
-    } else if (gameState == "lose"){
-        image(lose, 0, 0, lose.width*height/lose.height, height)
-        fill(200);
-        textSize(70);
-        textFont(font);
-        textAlign(CENTER, TOP);
-        text("YOU LOST", width/2, height/2+70);
+        text("insert message here", width / 2, height - 50);
 
-    } else if (gameState == "win"){
-        image(win, -win.width/2, 0, win.width*height/win.height, height);
+    } else if (gameState == "lose") {
+        image(lose, 0, 0, lose.width * height / lose.height, height)
         fill(200);
         textSize(70);
         textFont(font);
         textAlign(CENTER, TOP);
-        text("YOU WON", width/2, height/2);
+        text("YOU LOST", width / 2, height / 2 + 70);
+
+    } else if (gameState == "win") {
+        image(win, -win.width / 2, 0, win.width * height / win.height, height);
+        fill(200);
+        textSize(70);
+        textFont(font);
+        textAlign(CENTER, TOP);
+        text("YOU WON", width / 2, height / 2);
 
         let a = createA('/', 'this is a link')
-        a.position(width/2, height/2+90);
+        a.position(width / 2, height / 2 + 90);
         a.style('font-family', 'Arial, Helvetica, sans-serif');
     }
 
 }
 
 function touchStarted() {
-    if ((gameState == "instructions") && (can_start == true)){
+    if ((gameState == "instructions") && (can_start == true)) {
         //if ((mouseX > button_x) && (mouseX < button_x+button_r) && (mouseY > button_y) && (mouseY < button_y+button_r)) {
         gameState = "start"
             //}
@@ -341,7 +346,7 @@ function touchStarted() {
         if ((mouseX > button_x) && (mouseX < button_x + button_r) && (mouseY > button_y) && (mouseY < button_y + button_r)) {
             gameState = "start"
         }
-    } 
+    }
 
     //console.log(mouseX + "   " + mouseY)
 }
