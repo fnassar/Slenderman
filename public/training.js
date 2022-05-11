@@ -32,8 +32,8 @@ function gotResults(error, results){
         console.error(error);
     }
     console.log(results)
-    if (results[0].confidence>0.90){
-        label = results[0].label;
+    if (results[0].confidence>0.95){
+        label = results[0].label
     } else {
         label = "no object found"
     }
