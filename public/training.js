@@ -181,7 +181,17 @@ let help_me;
 let follows;
 let cant_run;
 let forest;
+let button;
+let wallpaper;
 
+//for leaderboard button
+let button_r;
+let button_x;
+let button_y;
+let effect;
+
+//for font
+let font;
 
 
 
@@ -213,20 +223,13 @@ function videoReady() {
 }
 
 
-
-
-//     //To start game:
-//     gameState = "instructions";
-//     // replace with ml5 objects
-//     let objects = ["1", "2", "3", "4", "5", "6", "7", "8"];
-//     // replace with hints
-//     let hints = ["1", "2", "3", "4", "5", "6", "7", "8"];
-//     game = new Game(objects, hints, user);
-// }
-
 function setup() {
 
-    //To load Images
+    button_r = 100;
+    button_x = windowWidth - 110;
+    button_y = 10;
+
+    //To load images of pages
     always_watches = loadImage("/img/pages/no_eyes.JPEG");
     nonono = loadImage("/img/pages/nonono.JPEG");
     leave_me_alone = loadImage("/img/pages/alone.JPEG");
@@ -235,7 +238,12 @@ function setup() {
     follows = loadImage("/img/pages/follows.JPEG");
     cant_run = loadImage("/img/pages/cant_run.JPEG");
     forest = loadImage("/img/pages/forest.JPEG");
+    button = loadImage("/img/button.png");
+    wallpaper = loadImage("/img/wallpaper.jpg");
+    effect = loadImage("/img/effect.png");
 
+    //to load font
+    font = loadFont('/img/Slenderman.ttf');
 
     //to create canvas and put it in the background
     canvas = createCanvas(windowWidth, windowHeight);
@@ -268,23 +276,34 @@ function setup() {
     //To start game:
     gameState = "instructions";
 
+    //     //To start game:
+//     gameState = "instructions";
+//     // replace with ml5 objects
+//     let objects = ["1", "2", "3", "4", "5", "6", "7", "8"];
+//     // replace with hints
+//     let hints = ["1", "2", "3", "4", "5", "6", "7", "8"];
+//     game = new Game(objects, hints, user);
+// }
+
 }
 
 function draw() {
     //translate(width, 0); // move to far corner
     //scale(-1.0, 1.0); // flip x-axis backwards
 
-
     if (gameState == "start") {
         background(255, 0, 0);
-        image(video, 0, 0, video.width, video.height); //video on canvas, position, dimensions
+        //image(video, 0, 0, video.width, video.height); //video on canvas, position, dimensions
+        image(video, 0, 0, width, height); //video on canvas, position, dimensions
+        image(effect, 0, 0, width, height)
 
-        square(width - 50, 0, 50)
+        //For LEADERBOARD button
+        image(button, button_x, button_y, button_r, button_r);
 
-        fill(0);
-        rect(20, 400, 100, 20);
-        fill(255)
-        text(label, 20, 400, 300, 300);
+        // fill(0);
+        // rect(20, 400, 100, 20);
+        // fill(255)
+        // text(label, 20, 400, 300, 300);
 
         //["always watches","nonono","leave me alone","dont look","help me","follows","cant run","forest"]}}
 
@@ -316,18 +335,23 @@ function draw() {
             image(forest, 0, 0, width, height);
         }
 
-
-
-
-
-
-
-
-
     } else if (gameState == "instructions") {
-        background(255, 255, 0);
+        image(wallpaper, 0, 0, width, height);
+        push();
+        //translate(0, height);
+        //rotate(90);
+        textSize(50);
+        textFont(font);
+        text("instructions", 13, 212);
+        pop();
     } else if (gameState == "help") {
-        rect(20, 20, width - 40, height - 40)
+        image(wallpaper, 0, 0, width, height);
+        //button image
+        image(button, button_x, button_y, button_r, button_r);
+        //textSize(50);
+        textFont(font);
+        text("insert message here", 10, 50);
+        
     }
 
 }
@@ -336,14 +360,21 @@ function draw() {
 
 function touchStarted() {
     if (gameState == "instructions") {
-        gameState = "start"
+        //if ((mouseX > button_x) && (mouseX < button_x+button_r) && (mouseY > button_y) && (mouseY < button_y+button_r)) {
+            gameState = "start"
+        //}
+
     } else if (gameState == "start") {
-        if ((mouseX > width - 50) && (mouseY < 50)) {
+        if ((mouseX > button_x) && (mouseX < button_x+button_r) && (mouseY > button_y) && (mouseY < button_y+button_r)) {
             gameState = "help"
         }
+
     } else if (gameState == "help") {
-        if ((mouseX > width - 50) && (mouseY < 50)) {
+        if ((mouseX > button_x) && (mouseX < button_x+button_r) && (mouseY > button_y) && (mouseY < button_y+button_r)) {
             gameState = "start"
         }
     }
+
+    console.log(mouseX + "   " + mouseY)
 }
+
