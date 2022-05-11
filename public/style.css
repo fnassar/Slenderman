@@ -1,3 +1,8 @@
+@font-face {
+    font-family: slenderman;
+    src: url(img/Slenderman.ttf);
+  }
+
 @media only screen and (max-width: 850px) {
     html,
     body {
@@ -6,6 +11,7 @@
         margin: 0;
         padding: 0;
         display: flex;
+        font-family: slenderman;
     }
     /* this is an error message for using pc */
     .error {
@@ -39,7 +45,7 @@
         width: 80vw;
     }
     .lobby_title h1 {
-        font-size: 5vh;
+        font-size: 4vh;
         max-width: 80%;
         width: max-content;
         text-align: center;

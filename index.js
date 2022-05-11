@@ -84,7 +84,7 @@ io.sockets.on('connect', (socket) => {
             // change emit objects and update to 8
         } else {
             io.to(socket.roomname).emit('updateLevel', data.level);
-        }
+        } 
 
     })
 })

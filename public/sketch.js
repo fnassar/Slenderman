@@ -29,6 +29,8 @@ let button;
 let button_return;
 let wallpaper;
 let hint_box
+let lose;
+
 
 //for leaderboard button
 let button_r;
@@ -38,16 +40,17 @@ let effect;
 
 //for font
 let font;
-
 let current_page;
 
+//to start game
+let can_start = false; 
 
 
 function gotResults(error, results) {
     if (error) {
         console.error(error);
     }
-    else if (results[0].confidence>0.90){
+    else if (results[0].confidence>0.85 ){
         label = results[0].label
     } else {
         label = "no object found"
@@ -64,6 +67,9 @@ function customModelReady() {
     console.log("Custom Model is ready");
     label = "model ready";
     detector.classify(gotResults)
+    
+    can_start = true;
+
 }
 
 function videoReady() {
@@ -91,6 +97,9 @@ function setup() {
     wallpaper = loadImage("/img/wallpaper.jpg");
     effect = loadImage("/img/effect.png");
     hint_box = loadImage("/img/hint_box.png");
+    lose = loadImage("/img/lose.jpg")
+    win = loadImage("/img/win.jpg")
+
 
     //to load font
     font = loadFont('/img/Slenderman.ttf');
@@ -153,7 +162,7 @@ function draw() {
         //["always watches","nonono","leave me alone","dont look","help me","follows","cant run","forest"]}}
 
         displayHints();
-        console.log(rooms[myname]);
+        //console.log(rooms[myname]);
         if (label != 'no object found') { console.log(level, label); }
 
 
@@ -274,9 +283,16 @@ function draw() {
         textSize(50);
         textFont(font);
         text("instructions", width/2, 212);
-        textSize(20);
-        text("touch anywere to continue", width/2, height-200);
+        textSize(10);
+        text("instructions", 0, 280, width, height);
 
+
+
+        if (can_start == true){
+            text("touch anywere to continue", width/2, height-200);
+        } else if (can_start == false) {
+            text("loading...", width/2, height-200);
+        }
 
     } else if (gameState == "help") {
         image(wallpaper, 0, 0, width, height);
@@ -286,12 +302,31 @@ function draw() {
         textFont(font);
         text("insert message here", width/2, height-50);
         
+    } else if (gameState == "lose"){
+        image(lose, 0, 0, lose.width*height/lose.height, height)
+        fill(200);
+        textSize(70);
+        textFont(font);
+        textAlign(CENTER, TOP);
+        text("YOU LOST", width/2, height/2+70);
+
+    } else if (gameState == "win"){
+        image(win, -win.width/2, 0, win.width*height/win.height, height);
+        fill(200);
+        textSize(70);
+        textFont(font);
+        textAlign(CENTER, TOP);
+        text("YOU WON", width/2, height/2);
+
+        let a = createA('/', 'this is a link')
+        a.position(width/2, height/2+90);
+        a.style('font-family', 'Arial, Helvetica, sans-serif');
     }
 
 }
 
 function touchStarted() {
-    if (gameState == "instructions") {
+    if ((gameState == "instructions") && (can_start == true)){
         //if ((mouseX > button_x) && (mouseX < button_x+button_r) && (mouseY > button_y) && (mouseY < button_y+button_r)) {
         gameState = "start"
             //}
@@ -305,9 +340,9 @@ function touchStarted() {
         if ((mouseX > button_x) && (mouseX < button_x + button_r) && (mouseY > button_y) && (mouseY < button_y + button_r)) {
             gameState = "start"
         }
-    }
+    } 
 
-    console.log(mouseX + "   " + mouseY)
+    //console.log(mouseX + "   " + mouseY)
 }
 
 
