@@ -45,20 +45,6 @@ window.addEventListener('load', () => {
     }
 
     console.log(rooms);
-    console.log(logbox);
 
     socket.on('userData', rooms);
-
-    // username.innerHTML = sessionStorage.getItem('name');
-
-    // let newWin = document.getElementById('newWin');
-    // let logWinsDiv = document.getElementById('div_wins_record');
-    // newWin.addEventListener('click', () => {
-    //     let name = sessionStorage.getItem('name');
-    //     chatObj = {
-    //         'name': name,
-    //         'msg': "msg"
-    //     }
-    //     socket.emit('newWin', chatObj);
-    // })
 })
