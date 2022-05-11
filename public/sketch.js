@@ -6,116 +6,262 @@
 //To change the camera https://editor.p5js.org/AndreasRef/sketches/HJVgGjmz4
 
 
-let video;
-let detector;
-let detections = [];
 
-let gameState;
-let game;
+// let video;
+// let mobilenet;
+// let detector;
 
-function preload() {
-    img = loadImage("/img/cat.jpg");
-    detector = ml5.objectDetector('cocossd');
-}
+// let gameState;
+// let game;
 
-function gotDetections(error, results) {
-    if (error) {
-        console.error(error);
-    }
-    detections = results;
-    detector.detect(video, gotDetections);
-}
+// let label = "loading model";
 
-function setup() {
-    //to create canvas and put it in the background
-    canvas = createCanvas(windowWidth, windowHeight);
-    canvas.parent('canvas_container');
-    canvas.position(0, 0);
-    canvas.style('z-index', '-1');
 
-    //to set up the front camera on the phone
-    var constraints = {
-        audio: false,
 
-        ///TO TEST ON PHONE, COMMENT IN THIS PART AND COMMENT OUT THE OTHER ONE 
-        // video: {
-        //     facingMode: {
-        //         exact: "environment"
-        //     }
-        // }
-        video: {
-            facingMode: "user"
-        }
-    };
-    video = createCapture(constraints);
-    //video.size(windowHeight, 480);
-    video.hide();
+// function gotResults(error, results){
+//     if (error) {
+//         console.error(error);
+//     }
+//     else if (results[0].confidence>0.95){
+//         label = results[0].label
+//     } else {
+//         label = "no object found"
+//     }
+//     detector.classify(gotResults);
+// }
 
-    detector.detect(video, gotDetections);
+// function modelReady() {
+//     console.log("model is ready")
+//     detector.load("/models/model.json", customModelReady);
+// }
 
-    //To start game:
-    gameState = "instructions";
-    // replace with ml5 objects
-    let objects = ["1", "2", "3", "4", "5", "6", "7", "8"];
-    // replace with hints
-    let hints = ["1", "2", "3", "4", "5", "6", "7", "8"];
-    game = new Game(objects, hints, user);
-}
+// function customModelReady() {
+//     console.log("Custom Model is ready")
+//     label = "model ready";
+//     detector.classify(gotResults)
+// }
 
-// // // //to resize window every time there's a change
-// function windowResized(){
-//     resizeCanvas(windowWidth, windowHeight);
+// function videoReady() {
+//     console.log("video is ready")
 // }
 
 
-function draw() {
-    // translate(width, 0); // move to far corner
-    // scale(-1.0, 1.0); // flip x-axis backwards
 
 
-    if (gameState == "start") {
-        background(255, 0, 0);
-        image(video, 0, 0, video.width, video.height); //video on canvas, position, dimensions
+// //     //To start game:
+// //     gameState = "instructions";
+// //     // replace with ml5 objects
+// //     let objects = ["1", "2", "3", "4", "5", "6", "7", "8"];
+// //     // replace with hints
+// //     let hints = ["1", "2", "3", "4", "5", "6", "7", "8"];
+// //     game = new Game(objects, hints, user);
+// // }
 
-        square(width - 50, 0, 50)
+// function setup() {
+//     //to create canvas and put it in the background
+//     canvas = createCanvas(windowWidth, windowHeight);
+//     canvas.parent('canvas_container');
+//     canvas.position(0, 0);
+//     canvas.style('z-index', '-1');
 
-        for (i in detections) {
-            let object = detections[i];
-            stroke(0, 255, 0);
-            strokeWeight(4);
-            noFill();
-            rect(object.x, object.y, object.width, object.height);
-            noStroke();
-            fill(255);
-            textSize(24);
-            text(object.label, object.x + 10, object.y + 24);
+//     //to set up the front camera on the phone
+//     var constraints = {
+//         audio: false,
 
-            // if(object.label == "bottle"){
-            //     background(255, 255, 0);
-            // }
+//         ///TO TEST ON PHONE, COMMENT IN THIS PART AND COMMENT OUT THE OTHER ONE 
+//         // video: {
+//         //     facingMode: {
+//         //         exact: "environment"
+//         //     }
+//         // }
+//         video: {
+//           facingMode: "user"
+//         } 
+//     };
 
-            // if(object.label == "cell phone"){
-            //     background(255, 0, 0);
-            // }
-        }
-    } else if (gameState == "instructions") {
-        background(255, 255, 0);
-    } else if (gameState == "help") {
-        rect(20, 20, width - 40, height - 40)
-    }
+//     video = createCapture(constraints);
+//     video.hide();
 
-}
+//     //COCOSD
+//     mobilenet = ml5.featureExtractor('MobileNet', modelReady);
+//     detector = mobilenet.classification(video, {numLabels: 8} , videoReady);
 
-function touchStarted() {
-    if (gameState == "instructions") {
-        gameState = "start"
-    } else if (gameState == "start") {
-        if ((mouseX > width - 50) && (mouseY < 50)) {
-            gameState = "help"
-        }
-    } else if (gameState == "help") {
-        if ((mouseX > width - 50) && (mouseY < 50)) {
-            gameState = "start"
-        }
-    }
-}
+//     //To start game:
+//     gameState = "instructions";
+
+// }
+
+// function draw() {
+//     translate(width, 0); // move to far corner
+//     scale(-1.0, 1.0); // flip x-axis backwards
+
+
+//     if (gameState == "start") {
+//         background(255, 0, 0);
+//         image(video, 0, 0, video.width, video.height); //video on canvas, position, dimensions
+
+//         square(width - 50, 0, 50)
+
+//         fill(0);
+//         rect(20, 400, 100, 20);
+//         ill(255)
+//         text(label, 20, 400, 300, 300);
+
+//         // for (i in detections) {
+//         //     let object = detections[i];
+//         //     stroke(0, 255, 0);
+//         //     strokeWeight(4);
+//         //     noFill();
+//         //     rect(object.x, object.y, object.width, object.height);
+//         //     noStroke();
+//         //     fill(255);
+//         //     textSize(24);
+//         //     text(object.label, object.x + 10, object.y + 24);
+
+//             // if(object.label == "bottle"){
+//             //     background(255, 255, 0);
+//             // }
+
+//             // if(object.label == "cell phone"){
+//             //     background(255, 0, 0);
+//             // }
+//     } else if (gameState == "instructions") {
+//         background(255, 255, 0);
+//     } else if (gameState == "help") {
+//         rect(20, 20, width - 40, height - 40)
+//     }
+
+// }
+
+
+
+// function touchStarted() {
+//     if (gameState == "instructions") {
+//         gameState = "start"
+//     } else if (gameState == "start") {
+//         if ((mouseX > width - 50) && (mouseY < 50)) {
+//             gameState = "help"
+//         }
+//     } else if (gameState == "help") {
+//         if ((mouseX > width - 50) && (mouseY < 50)) {
+//             gameState = "start"
+//         }
+//     }
+// }
+
+
+
+
+// let video;
+// let detector;
+// let detections = [];
+
+// let gameState;
+// let game;
+
+// function preload() {
+//     img = loadImage("/img/cat.jpg");
+//     detector = ml5.objectDetector('cocossd');
+// }
+
+// function gotDetections(error, results) {
+//     if (error) {
+//         console.error(error);
+//     }
+//     detections = results;
+//     detector.detect(video, gotDetections);
+// }
+
+// function setup() {
+//     //to create canvas and put it in the background
+//     canvas = createCanvas(windowWidth, windowHeight);
+//     canvas.parent('canvas_container');
+//     canvas.position(0, 0);
+//     canvas.style('z-index', '-1');
+
+//     //to set up the front camera on the phone
+//     var constraints = {
+//         audio: false,
+
+//         ///TO TEST ON PHONE, COMMENT IN THIS PART AND COMMENT OUT THE OTHER ONE 
+//         // video: {
+//         //     facingMode: {
+//         //         exact: "environment"
+//         //     }
+//         // }
+//         video: {
+//             facingMode: "user"
+//         }
+//     };
+//     video = createCapture(constraints);
+//     //video.size(windowHeight, 480);
+//     video.hide();
+
+//     detector.detect(video, gotDetections);
+
+//     //To start game:
+//     gameState = "instructions";
+//     // // replace with ml5 objects
+//     // let objects = ["1", "2", "3", "4", "5", "6", "7", "8"];
+//     // // replace with hints
+//     // let hints = ["1", "2", "3", "4", "5", "6", "7", "8"];
+//     // game = new Game(objects, hints, user);
+// }
+
+// // // // //to resize window every time there's a change
+// // function windowResized(){
+// //     resizeCanvas(windowWidth, windowHeight);
+// // }
+
+
+// function draw() {
+//     // translate(width, 0); // move to far corner
+//     // scale(-1.0, 1.0); // flip x-axis backwards
+
+
+//     if (gameState == "start") {
+//         background(255, 0, 0);
+//         image(video, 0, 0, video.width, video.height); //video on canvas, position, dimensions
+
+//         square(width - 50, 0, 50)
+
+//         for (i in detections) {
+//             let object = detections[i];
+//             stroke(0, 255, 0);
+//             strokeWeight(4);
+//             noFill();
+//             rect(object.x, object.y, object.width, object.height);
+//             noStroke();
+//             fill(255);
+//             textSize(24);
+//             text(object.label, object.x + 10, object.y + 24);
+
+//             // if(object.label == "bottle"){
+//             //     background(255, 255, 0);
+//             // }
+
+//             // if(object.label == "cell phone"){
+//             //     background(255, 0, 0);
+//             // }
+//         }
+//     } else if (gameState == "instructions") {
+//         background(255, 255, 0);
+//     } else if (gameState == "help") {
+//         rect(20, 20, width - 40, height - 40)
+//     }
+
+// }
+
+// function touchStarted() {
+//     if (gameState == "instructions") {
+//         gameState = "start"
+//     } else if (gameState == "start") {
+//         if ((mouseX > width - 50) && (mouseY < 50)) {
+//             gameState = "help"
+//         }
+//     } else if (gameState == "help") {
+//         if ((mouseX > width - 50) && (mouseY < 50)) {
+//             gameState = "start"
+//         }
+//     }
+// }
