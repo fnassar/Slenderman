@@ -46,7 +46,8 @@ let current_page;
 function gotResults(error, results) {
     if (error) {
         console.error(error);
-    } else if (results[0].confidence > 0.90) {
+    }
+    else if (results[0].confidence>0.90){
         label = results[0].label
     } else {
         label = "no object found"
@@ -136,7 +137,8 @@ function draw() {
 
     if (gameState == "start") {
         //background(255, 0, 0);
-        image(video, 0, 0, video.width, video.height); //video on canvas, position, dimensions
+        image(wallpaper, 0, 0, width, height);
+        image(video, 0, 0, video.width*height/video.height, height); //video on canvas, position, dimensions
         //image(video, 0, 0, width, height); //video on canvas, position, dimensions
         image(effect, 0, 0, width, height)
 
@@ -153,67 +155,110 @@ function draw() {
         displayHints();
         console.log(rooms[myname]);
         if (label != 'no object found') { console.log(level, label); }
-        if (level == 1 && label == "forest") {
-            //background(255, 255, 0);
-            image(always_watches, 0, 0, width, height);
+
+
+
+        if(level == 1 && label == "forest") {
+
+            let img_h = forest.height * (width-80) / forest.width
+            let y = (height-img_h)/2;
+            image(forest, 40, y, width-80, img_h);
+
             rooms[myname].score++;
             let data = {
                 gameLevel: level,
                 score: rooms[myname].score
             };
             socket.emit('newWin', data);
-        } else if (level == 2 && label == "nonono") {
-            //background(255, 255, 0);
-            image(nonono, 0, 0, width, height);
+        } 
+        else if (level == 2 && label == "nonono") {
+
+            let img_h = nonono.height * (width-80) / nonono.width
+            let y = (height-img_h)/2;
+            image(nonono, 40, y, width-80, img_h);
+
             rooms[myname].score++;
             let data = {
                 gameLevel: level,
                 score: rooms[myname].score
             };
             socket.emit('newWin', data);
-        } else if (level == 3 && label == "leave me alone") {
-            //background(255, 255, 0);
-            image(leave_me_alone, 0, 0, width, height);
+
+        } 
+        else if (level == 3 && label == "leave me alone") {
+
+            let img_h = leave_me_alone.height * (width-80) / leave_me_alone.width
+            let y = (height-img_h)/2;
+            image(leave_me_alone, 40, y, width-80, img_h);
+
             rooms[myname].score++;
             let data = {
                 gameLevel: level,
                 score: rooms[myname].score
             };
             socket.emit('newWin', data);
-        } else if (level == 4 && label == "dont look") {
-            image(dont_look, 0, 0, width, height);
+
+        } 
+        else if (level == 4 && label == "dont look") {
+
+            let img_h = dont_look.height * (width-80) / dont_look.width
+            let y = (height-img_h)/2;
+            image(dont_look, 40, y, width-80, img_h);
+
             rooms[myname].score++;
             let data = {
                 gameLevel: level,
                 score: rooms[myname].score
             };
             socket.emit('newWin', data);
-        } else if (level == 5 && label == "help me") {
-            image(help_me, 0, 0, width, height);
+
+        } 
+        else if (level == 5 && label == "help me") {
+
+            let img_h = help_me.height * (width-80) / help_me.width
+            let y = (height-img_h)/2;
+            image(help_me, 40, y, width-80, img_h);
+
             rooms[myname].score++;
             let data = {
                 gameLevel: level,
                 score: rooms[myname].score
             };
             socket.emit('newWin', data);
-        } else if (level == 6 && label == "follows") {
-            image(follows, 0, 0, width, height);
+
+        } 
+        else if (level == 6 && label == "follows") {
+
+            let img_h = follows.height * (width-80) / follows.width
+            let y = (height-img_h)/2;
+            image(follows, 40, y, width-80, img_h);
+
             rooms[myname].score++;
             let data = {
                 gameLevel: level,
                 score: rooms[myname].score
             };
             socket.emit('newWin', data);
-        } else if (level == 7 && label == "cant run") {
-            image(cant_run, 0, 0, width, height);
+        } 
+        else if (level == 7 && label == "cant run") {
+
+            let img_h = cant_run.height * (width-80) / cant_run.width
+            let y = (height-img_h)/2;
+            image(cant_run, 40, y, width-80, img_h);
+
             rooms[myname].score++;
             let data = {
                 gameLevel: level,
                 score: rooms[myname].score
             };
             socket.emit('newWin', data);
-        } else if (level == 8 && label == "always watches") {
-            image(forest, 0, 0, width, height);
+        } 
+        else if (level == 8 && label == "always watches") {
+
+            let img_h = always_watches.height * (width-80) / always_watches.width
+            let y = (height-img_h)/2;
+            image(always_watches, 40, y, width-80, img_h);
+
             rooms[myname].score++;
             let data = {
                 gameLevel: level,
@@ -225,13 +270,13 @@ function draw() {
     } else if (gameState == "instructions") {
 
         image(wallpaper, 0, 0, width, height);
-        push();
-        //translate(0, height);
-        //rotate(90);
+        textAlign(CENTER, TOP);
         textSize(50);
         textFont(font);
-        text("instructions", 13, 212);
-        pop();
+        text("instructions", width/2, 212);
+        textSize(20);
+        text("touch anywere to continue", width/2, height-200);
+
 
     } else if (gameState == "help") {
         image(wallpaper, 0, 0, width, height);
@@ -239,13 +284,11 @@ function draw() {
         image(button_return, button_x, button_y, button_r, button_r);
         //textSize(50);
         textFont(font);
-        text("insert message here", 10, 50);
-
+        text("insert message here", width/2, height-50);
+        
     }
 
 }
-
-
 
 function touchStarted() {
     if (gameState == "instructions") {
@@ -270,28 +313,31 @@ function touchStarted() {
 
 function displayHints() {
 
-    let box_height = hint_box.height * width / hint_box.width
-    image(hint_box, 0, height - box_height, width, box_height);
+    let box_height = hint_box.height*width/hint_box.width
+    image(hint_box, 0, height-box_height/1.5, width, box_height);
     let hint;
 
     if (current_page == 1) {
-        hint = "hola";
+        hint = "hint 1";
     } else if (current_page == 2) {
-
+        hint = "hint 2";
     } else if (current_page == 3) {
-
+        hint = "hint 3";
     } else if (current_page == 4) {
-
+        hint = "hint 4";
     } else if (current_page == 5) {
-
+        hint = "hint 5";
     } else if (current_page == 6) {
-
+        hint = "hint 6";
     } else if (current_page == 7) {
-
+        hint = "hint 7";
     } else if (current_page == 8) {
-
+        hint = "hint 8";
     }
 
-
+    textFont(font);
+    textSize(20);
+    textAlign(CENTER, TOP);
+    text(hint, width/2, height-box_height/2);
 
 }
