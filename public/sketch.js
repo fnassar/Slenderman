@@ -151,7 +151,7 @@ function setup() {
     gameState = "instructions";
     //current_page = 1;
 
-    last_millis = 0;
+    //last_millis = 0;
 
 
 }
@@ -160,8 +160,8 @@ function draw() {
     //translate(width, 0); // move to far corner
     //scale(-1.0, 1.0); // flip x-axis backwards
 
-    time = round(millis()/1000);
-    console.log(last_millis);
+    //time = round(millis()/1000);
+    //console.log(last_millis);
 
     if (gameState == "start") {
         //background(255, 0, 0);
@@ -180,6 +180,8 @@ function draw() {
 
 
         if (level == 1 && label == "forest") {
+            hint = hint1;
+            level++;
             // last_millis = time;
             // time = millis();
             // if (time - last_millis <=4){
@@ -187,8 +189,6 @@ function draw() {
             let y = (height - img_h) / 2;
             image(forest, 40, y, width - 80, img_h);
             
-            level++;
-            hint = hint1;
             rooms[myname].score++;
             let data = {
                 name: myname,
