@@ -368,6 +368,11 @@ function draw() {
         textAlign(CENTER, TOP);
         text("YOU LOST", width / 2, height / 2 + 70);
 
+        let a = createA('/', 'play again?')
+        a.position(width / 2 -50, height / 2 +170);
+        a.style('font-family', 'slenderman');
+        a.style('color', '#d9b8b6');
+
     } else
     if (gameState == "win") {
         image(win, -win.width / 2, 0, win.width * height / win.height, height);
@@ -377,9 +382,10 @@ function draw() {
         textAlign(CENTER, TOP);
         text("YOU WON", width / 2, height / 2);
 
-        let a = createA('/', 'this is a link')
-        a.position(width / 2, height / 2 + 90);
-        a.style('font-family', 'Arial, Helvetica, sans-serif');
+        let a = createA('/', 'play again?')
+        a.position(width / 2-50, height / 2 + 90);
+        a.style('font-family', 'slenderman');
+        a.style('color', '#d9b8b6');
     }
 
 }
