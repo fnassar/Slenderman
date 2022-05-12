@@ -14,6 +14,9 @@ let game;
 
 let label = "loading model";
 
+let last_millis; 
+let time
+
 //For images
 let always_watches;
 let nonono;
@@ -49,13 +52,13 @@ let can_start = false;
 let hint = "The IM department has cutting-edge technology. We're so lucky!"
 let hint1 = "using my xbox controller and looking through the window, y'all look like sims"
 let hint2 = "nothing like a book and pizza on a cold day of may"
-let hint3 = "splish, splash, crash, trash"
-let hint4 = "Jack b du, where are u"
+let hint3 = "splish, splash, your opinion is trash"
+let hint4 = "Jack b du, where are u?"
 let hint5 = "netflix and chill?, send some recs"
 let hint6 = "i wonder if the koala kids are already here"
-let hint7 = "balck and white thinking. let's write something down"
+let hint7 = "black and white thinking. let's write something down"
 
-hint = hint1;
+
 
 
 function gotResults(error, results) {
@@ -148,6 +151,7 @@ function setup() {
     gameState = "instructions";
     //current_page = 1;
 
+    //last_millis = 0;
 
 
 }
@@ -155,6 +159,9 @@ function setup() {
 function draw() {
     //translate(width, 0); // move to far corner
     //scale(-1.0, 1.0); // flip x-axis backwards
+
+    //time = round(millis()/1000);
+    //console.log(last_millis);
 
     if (gameState == "start") {
         //background(255, 0, 0);
@@ -174,13 +181,14 @@ function draw() {
 
         if (level == 1 && label == "forest") {
             hint = hint1;
-
             level++;
+            // last_millis = time;
+            // time = millis();
+            // if (time - last_millis <=4){
             let img_h = forest.height * (width - 80) / forest.width
             let y = (height - img_h) / 2;
             image(forest, 40, y, width - 80, img_h);
-            // delay.delayTime(3000);
-
+            
             rooms[myname].score++;
             let data = {
                 name: myname,
@@ -188,6 +196,7 @@ function draw() {
                 score: rooms[myname].score
             };
             socket.emit('newWin', data);
+            
         } else if (level == 2 && label == "nonono") {
             hint = hint2;
 
@@ -359,6 +368,11 @@ function draw() {
         textAlign(CENTER, TOP);
         text("YOU LOST", width / 2, height / 2 + 70);
 
+        let a = createA('/', 'play again?')
+        a.position(width / 2 -50, height / 2 +170);
+        a.style('font-family', 'slenderman');
+        a.style('color', '#d9b8b6');
+
     } else
     if (gameState == "win") {
         image(win, -win.width / 2, 0, win.width * height / win.height, height);
@@ -368,9 +382,10 @@ function draw() {
         textAlign(CENTER, TOP);
         text("YOU WON", width / 2, height / 2);
 
-        let a = createA('/', 'this is a link')
-        a.position(width / 2, height / 2 + 90);
-        a.style('font-family', 'Arial, Helvetica, sans-serif');
+        let a = createA('/', 'play again?')
+        a.position(width / 2-50, height / 2 + 90);
+        a.style('font-family', 'slenderman');
+        a.style('color', '#d9b8b6');
     }
 
 }
