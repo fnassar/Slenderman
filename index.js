@@ -1,4 +1,4 @@
-const MAX_USERS_ROOM = 4;
+const MAX_USERS_ROOM = 5;
 //Initialize the express 'app' object
 let express = require('express');
 const { use } = require('express/lib/application');
