@@ -56,7 +56,7 @@ _These are some images we took of the players while user testing_
 - To fix the compatibility issues with iOS and Android, so more users can play the game.
 - To give more details about the users to offer a more personalized experience.
 
-## IV| Back End
+## IV | Back End
 
 - We used sockets for the back end 
 - After adding the user to their own rooms we save the user data, including name room and user score in the index.js 
@@ -68,14 +68,14 @@ _These are some images we took of the players while user testing_
 An error I made was not specifying the room information when sending the data, so even though the sockets worked perfectly fine, the data being sent through sockets was not specific to the room, but instead it was to all the players. We only noticed this problem the morning before the submission so we didn’t have time to fix it.
 The day of testing the win lose screen did not show up as it did during testing, we are unsure about the reason but if we go further with the game we plan on checking that error before publication.
 
-## VI| Personal Review and thoughts: 
+## VI | Personal Review and thoughts: 
 ### Fatema:
-I really enjoyed every part of this project, I mostly worked on sockets, game technicalities, and the entry page and while I had input on the game aesthetics it was mostly [Andres](https://github.com/andresugartechea).
+I really enjoyed every part of this project, I mostly worked on sockets, game technicalities, and the entry page and while I had input on the game aesthetics it was mostly Andres.
 
 While we planned a different idea at the begining, I think the fact that we endded up with a game that is mostly in person but still uses sockets as required by the class was our greatest accomplishment. 
 
 We hope to take this project furthur which still needs more work and debugging, but we are at a pretty good place I believe
 
-### Andres:
+### [Andres](https://github.com/andresugartechea):
 
 
