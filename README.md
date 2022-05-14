@@ -69,7 +69,7 @@ An error I made was not specifying the room information when sending the data, s
 The day of testing the win lose screen did not show up as it did during testing, we are unsure about the reason but if we go further with the game we plan on checking that error before publication.
 
 ## VI | Personal Review and thoughts: 
-### Fatema:
+### [Fatema](https://github.com/fnassar):
 I really enjoyed every part of this project, I mostly worked on sockets, game technicalities, and the entry page and while I had input on the game aesthetics it was mostly Andres.
 
 While we planned a different idea at the begining, I think the fact that we endded up with a game that is mostly in person but still uses sockets as required by the class was our greatest accomplishment. 
