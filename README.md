@@ -11,8 +11,6 @@ _”Slenderman’s Scavenger Hunt”_ is a multiplayer online game inspired by [
 
 ## II | Design and Wireframe:
 
-<img src="/doc_Images/wireframe.png" height ="500" />
-
 - Our game is designed for phones, so we stopped the website from showing sections when it was open on a screen bigger than 850px in width.
 - For the entry page, we used a simple room number and name entry which we used to save the user details and decade which room for the user to join the room they prefer.
 
@@ -69,7 +67,14 @@ _These are some images we took of the players while user testing_
 An error I made was not specifying the room information when sending the data, so even though the sockets worked perfectly fine, the data being sent through sockets was not specific to the room, but instead it was to all the players. We only noticed this problem the morning before the submission so we didn’t have time to fix it.
 The day of testing the win lose screen did not show up as it did during testing, we are unsure about the reason but if we go further with the game we plan on checking that error before publication.
 
+## VI| Personal Review and thoughts: 
+### Fatema:
+I really enjoyed every part of this project, I mostly worked on sockets, game technicalities, and the entry page and while I had input on the game aesthetics it was mostly [Andres](https://github.com/andresugartechea).
 
-## V| Personal documentation: 
+While we planned a different idea at the begining, I think the fact that we endded up with a game that is mostly in person but still uses sockets as required by the class was our greatest accomplishment. 
+
+We hope to take this project furthur which still needs more work and debugging, but we are at a pretty good place I believe
+
+### Andres:
 
 
