@@ -11,6 +11,8 @@ _”Slenderman’s Scavenger Hunt”_ is a multiplayer online game inspired by [
 
 ## II | Design and Wireframe:
 
+<img src="/doc_Images/wireframe.png" height ="500" />
+
 - Our game is designed for phones, so we stopped the website from showing sections when it was open on a screen bigger than 850px in width.
 - For the entry page, we used a simple room number and name entry which we used to save the user details and decade which room for the user to join the room they prefer.
 
