@@ -10,6 +10,7 @@
 _”Slenderman’s Scavenger Hunt”_ is a multiplayer online game inspired by [an Internet creepypasta from 2009](https://en.wikipedia.org/wiki/Slender_Man) with the playability of the traditional game of scavenger hunt. The website was made for mobile devices compatible with [ML5.js](https://ml5js.org/). The user enters the game’s website to see a portal where they can type a username and join a room to play with up to 5 people at the same time. Then, the user lands on the game page where they can read the instructions and start playing. During the game, the camera has to be enabled to scan the objects and get hints of their locations. 
 
 ## II | Design and Wireframe:
+<img src="/doc_Images/wireframe.png" height ="500" />
 
 - Our game is designed for phones, so we stopped the website from showing sections when it was open on a screen bigger than 850px in width.
 - For the entry page, we used a simple room number and name entry which we used to save the user details and decade which room for the user to join the room they prefer.
