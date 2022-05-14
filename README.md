@@ -12,4 +12,4 @@ _”Slenderman’s Scavenger Hunt”_ is a multiplayer online game inspired by [
 <img src="/doc_Images/one.png" height ="500" /><img src="/doc_Images/two.png" height ="500" /><img src="/doc_Images/three.png" height ="500" /><img src="/doc_Images/four.png" height ="500" /><img src="/doc_Images/five.png" height ="500" /><img src="/doc_Images/six.png" height ="500" /><img src="/doc_Images/seven.png" height ="500" /><img src="/doc_Images/eight.png" height ="500" />
 
 
-<img src="/doc_Images/test1.jpeg" height ="500" /><img src="/doc_Images/test2.jpeg" height ="500" /><img src="/doc_Images/test3.jpeg" height ="500" /><img src="/doc_Images/test4.jpeg" height ="500" /><img src="/doc_Images/test5.jpeg" height ="500" />
+<img src="/doc_Images/test1.jpeg" height ="400" /><img src="/doc_Images/test2.jpeg" height ="400" /><img src="/doc_Images/test3.jpeg" height ="400" /><img src="/doc_Images/test4.jpeg" height ="400" /><img src="/doc_Images/test5.jpeg" height ="400" />
