@@ -11,10 +11,6 @@ _”Slenderman’s Scavenger Hunt”_ is a multiplayer online game inspired by [
 
 ## II | Design and Wireframe:
 
-_”Slenderman’s Scavenger Hunt”_ is a multiplayer online game inspired by [an Internet creepypasta from 2009](https://en.wikipedia.org/wiki/Slender_Man) with the playability of the traditional game of scavenger hunt. The website was made for mobile devices compatible with [ML5.js](https://ml5js.org/). The user enters the game’s website to see a portal where they can type a username and join a room to play with up to 5 people at the same time. Then, the user lands on the game page where they can read the instructions and start playing. During the game, the camera has to be enabled to scan the objects and get hints of their locations. 
-
-## III | Design and Wireframe:
-
 Our aim for this project was to create a mobile connected application, since it is something we hadn’t done before in this class and would certainly signify a new challenge for both of us. Comparing different mobile-friendly websites, we realized that our layout needed to be as simple and intuitive as possible. In the following image you can see the wireframe we used for our website:
 
 <img src="/doc_Images/wireframe.png" height ="500" />
@@ -48,12 +44,12 @@ We made two images for the win and lose screens. Thee winner with the highest sc
 <img src="/doc_Images/seven.png" height ="500" /><img src="/doc_Images/eight.png" height ="500" />
 
 
-## IV | User testing:
+## III | User testing:
 _These are some images we took of the players while user testing_
 
 <img src="/doc_Images/test1.jpeg" height ="300" /><img src="/doc_Images/test2.jpeg" height ="300" /><img src="/doc_Images/test3.jpeg" height ="300" /><img src="/doc_Images/test4.jpeg" height ="300" /><img src="/doc_Images/test5.jpeg" height ="300" />
 
-## V | Next steps:
+## IV | Next steps:
 
 ### A - Expansion Ideas: 
 
@@ -66,7 +62,7 @@ _These are some images we took of the players while user testing_
 - To fix the compatibility issues with iOS and Android, so more users can play the game.
 - To give more details about the users to offer a more personalized experience.
 
-## VI | Back End
+## V | Back End
 
 - We used sockets for the back end 
 - After adding the user to their own rooms we save the user data, including name room and user score in the index.js 
