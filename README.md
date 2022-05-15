@@ -45,9 +45,16 @@ We made two images for the win and lose screens. Thee winner with the highest sc
 
 
 ## III | User testing:
-_These are some images we took of the players while user testing_
 
-<img src="/doc_Images/test1.jpeg" height ="300" /><img src="/doc_Images/test2.jpeg" height ="300" /><img src="/doc_Images/test3.jpeg" height ="300" /><img src="/doc_Images/test4.jpeg" height ="300" /><img src="/doc_Images/test5.jpeg" height ="300" />
+Our game is programmed to be a one-time experience, due that the ML5.js models need to be trained and the time constraints forced us to limit our audience to people from campus. For this reason, we required users that are already familiar with the campus amenities to test our project. In the following pictures you can see professor Mathura Govindarajan from our Connections Lab class and the lab Manager and instructor of Interactive Media, Ume Hussain, helping us with the user testing:
+
+<img src="/doc_Images/test1.jpeg" height ="300" /><img src="/doc_Images/test2.jpeg" height ="300" />
+
+The feedback we received from their experiences was mostly positive. Something to highlight is that the playability was enjoyable and the aesthetics of the game are attractive. During the test, we found some glitches caused by the training of our ML5.js model, which we could solve in the future by taking more images of each page.
+
+<img src="/doc_Images/test3.jpeg" height ="300" /><img src="/doc_Images/test4.jpeg" height ="300" /><img src="/doc_Images/test5.jpeg" height ="300" />
+
+Something that professor Govindarajan mentioned was that she didn’t notice that there was a button on the top right corner and that it was not evident when one of the users finds a page. She recommended changing the design of the button and adding sound effects to fix these issues.
 
 ## IV | Next steps:
 
