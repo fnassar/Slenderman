@@ -98,19 +98,24 @@ We used sockets.io and ML5.js in the creation of this project.
 
 -Then, we used [the feature extractor classification](https://thecodingtrain.com/learning/ml5/3.1-feature-extractor-classification.html) to train the ML5.js detector with our own model.
 
--Finally, we moved the code to ‘training.html’ to have an independent page where to train our models, and we added a [save button](https://www.youtube.com/watch?v=eU7gIy3xV30) to download them.
+-Finally, we moved the code to _‘training.html’_ to have an independent page where to train our models, and we added a [save button](https://www.youtube.com/watch?v=eU7gIy3xV30) to download them.
 
 ### Major problems and solutions
 
 #### Fatema Nassar:
 
 An error I made was not specifying the room information when sending the data, so even though the sockets worked perfectly fine, the data being sent through sockets was not specific to the room, but instead it was to all the players. We only noticed this problem the morning before the submission so we didn’t have time to fix it.
+
 The day of testing the win lose screen did not show up as it did during testing, we are unsure about the reason but if we go further with the game we plan on checking that error before publication.
 
 #### Andres Ugartechea:
 
+I focused on the implementation of ML5.js for this project. Training the model was the part that took me more time to finish since I was completely new to machine learning. In our original concept, all the pages were black and white as in the original game. However, after testing in multiple conditions we decided to color each one of the pages for the game, to allow the model to detect them with more accuracy.
+
+Another problem that I encountered was the compatibility issues with my phone. I found on a forum that [some iOS devices do not work properly with the models](https://github.com/ml5js/ml5-library/issues/383), therefore this was an issue that was out of my control. A way to solve this was to restrict our audience to Android users, but we hope in the future we can expand it to all devices.
 
 ## VI | Personal Review and thoughts: 
+
 ### [Fatema](https://github.com/fnassar):
 I really enjoyed every part of this project, I mostly worked on sockets, game technicalities, and the entry page and while I had input on the game aesthetics it was mostly Andres.
 
