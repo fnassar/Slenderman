@@ -119,13 +119,20 @@ Another problem that I encountered was the compatibility issues with my phone. I
 
 ## VI | Personal Review and thoughts: 
 
-### [Fatema](https://github.com/fnassar):
+### [Fatema Nassar](https://github.com/fnassar):
+
 I really enjoyed every part of this project, I mostly worked on sockets, game technicalities, and the entry page and while I had input on the game aesthetics it was mostly Andres.
 
 While we planned a different idea at the begining, I think the fact that we endded up with a game that is mostly in person but still uses sockets as required by the class was our greatest accomplishment. 
 
-We hope to take this project furthur which still needs more work and debugging, but we are at a pretty good place I believe
+We hope to take this project further which still needs more work and debugging, but we are at a pretty good place I believe.
 
-### [Andres](https://github.com/andresugartechea):
+### [Andres Ugartechea](https://github.com/andresugartechea):
+
+This project was equally stressful and enjoyable to do. I know this is only the tip of the machine learning’s iceberg, but for me, it was a great achievement to understand its basic concepts. 
+
+Fatema and I plan to keep working on this project in the future and hopefully offer it as one of the activities for community building on campus.
+
+I started to have fun developing games and I think it’s something I want to keep doing in future works. Thanks to these experiences, I don’t have the reflex to limit my creativity to fit my knowledge, since I acquired the necessary learning tools in this class to gain more skills by myself. 
 
 
