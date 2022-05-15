@@ -10,40 +10,50 @@
 _”Slenderman’s Scavenger Hunt”_ is a multiplayer online game inspired by [an Internet creepypasta from 2009](https://en.wikipedia.org/wiki/Slender_Man) with the playability of the traditional game of scavenger hunt. The website was made for mobile devices compatible with [ML5.js](https://ml5js.org/). The user enters the game’s website to see a portal where they can type a username and join a room to play with up to 5 people at the same time. Then, the user lands on the game page where they can read the instructions and start playing. During the game, the camera has to be enabled to scan the objects and get hints of their locations. 
 
 ## II | Design and Wireframe:
+
+_”Slenderman’s Scavenger Hunt”_ is a multiplayer online game inspired by [an Internet creepypasta from 2009](https://en.wikipedia.org/wiki/Slender_Man) with the playability of the traditional game of scavenger hunt. The website was made for mobile devices compatible with [ML5.js](https://ml5js.org/). The user enters the game’s website to see a portal where they can type a username and join a room to play with up to 5 people at the same time. Then, the user lands on the game page where they can read the instructions and start playing. During the game, the camera has to be enabled to scan the objects and get hints of their locations. 
+
+## III | Design and Wireframe:
+
+Our aim for this project was to create a mobile connected application, since it is something we hadn’t done before in this class and would certainly signify a new challenge for both of us. Comparing different mobile-friendly websites, we realized that our layout needed to be as simple and intuitive as possible. In the following image you can see the wireframe we used for our website:
+
 <img src="/doc_Images/wireframe.png" height ="500" />
 
-- Our game is designed for phones, so we stopped the website from showing sections when it was open on a screen bigger than 850px in width.
-- For the entry page, we used a simple room number and name entry which we used to save the user details and decade which room for the user to join the room they prefer.
+To ensure that our game was only run on phones, we stopped the website from showing sections when it was open on a screen bigger than 850px in width:
+```
+@media only screen and (max-width: 850px) {
+```
+For the landing page, we added a username and room entry to save the user’s details and let them decide which match they want to join.
 
 <img src="/doc_Images/one.png" height ="500" />
 
-- We added a loading screen with instructions while the ml5 data was loading ater the user enters the game.
+After the user joins a room, a screen appears with the instructions while the ML5.js data loads.
 
 <img src="/doc_Images/two.png" height ="500" />
 
-- For the game itself, we added a button on top to show the user data and other players scores.
-
-<img src="/doc_Images/three.png" height ="500" />  <img src="/doc_Images/four.png" height ="500" />
-
-- We used a filter on the camera to make the aesthetic match the vibe of the slenderman
-- We added the next hint messages on the bottom of the screen, they update as the users progresse through the game.
+For the game itself, the website takes input from the back camera to draw the video on the entire screen. We also added a filter on the screen to make the aesthetic match the ambience of Slenderman. The hints are displayed at the bottom of the screen and they update as the players progress through the game.
 
 <img src="/doc_Images/five.png" height ="500" />
 
-- We displayed the image found when it was scanned for the user to know that the object was scanned
+The button on the top right corner shows the user data and the other players’ scores.
+
+<img src="/doc_Images/three.png" height ="500" />  <img src="/doc_Images/four.png" height ="500" />
+
+To let the user know that a page has been scanned successfully, an image of the page found is displayed on screen.
 
 <img src="/doc_Images/six.png" height ="500" />
 
-- We made two images for the win and lose screens, the winner with the highest score sees the win screen and all the others see the losing screen
+We made two images for the win and lose screens. Thee winner with the highest score sees the win screen and all the others see the lose screen.
 
 <img src="/doc_Images/seven.png" height ="500" /><img src="/doc_Images/eight.png" height ="500" />
 
-## III | User testing:
+
+## IV | User testing:
 _These are some images we took of the players while user testing_
 
 <img src="/doc_Images/test1.jpeg" height ="300" /><img src="/doc_Images/test2.jpeg" height ="300" /><img src="/doc_Images/test3.jpeg" height ="300" /><img src="/doc_Images/test4.jpeg" height ="300" /><img src="/doc_Images/test5.jpeg" height ="300" />
 
-## III | Next steps:
+## V | Next steps:
 
 ### A - Expansion Ideas: 
 
@@ -56,7 +66,7 @@ _These are some images we took of the players while user testing_
 - To fix the compatibility issues with iOS and Android, so more users can play the game.
 - To give more details about the users to offer a more personalized experience.
 
-## IV | Back End
+## VI | Back End
 
 - We used sockets for the back end 
 - After adding the user to their own rooms we save the user data, including name room and user score in the index.js 
