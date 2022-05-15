@@ -4,7 +4,7 @@ let socket = io();
 let logbox = document.getElementById('div_wins_record');
 let rooms = {};
 
-let level = 8;
+let level = 1;
 let score = 0;
 let myname;
 let gameState;
