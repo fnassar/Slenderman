@@ -112,6 +112,9 @@ The day of testing the win lose screen did not show up as it did during testing,
 
 I focused on the implementation of ML5.js for this project. Training the model was the part that took me more time to finish since I was completely new to machine learning. In our original concept, all the pages were black and white as in the original game. However, after testing in multiple conditions we decided to color each one of the pages for the game, to allow the model to detect them with more accuracy.
 
+<img src="https://github.com/fnassar/Slenderman/blob/main/public/img/pages/alone.JPEG" height ="100" />
+
+
 Another problem that I encountered was the compatibility issues with my phone. I found on a forum that [some iOS devices do not work properly with the models](https://github.com/ml5js/ml5-library/issues/383), therefore this was an issue that was out of my control. A way to solve this was to restrict our audience to Android users, but we hope in the future we can expand it to all devices.
 
 ## VI | Personal Review and thoughts: 
