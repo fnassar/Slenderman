@@ -9,7 +9,7 @@
 
 _”Slenderman’s Scavenger Hunt”_ is a multiplayer online game inspired by [an Internet creepypasta from 2009](https://en.wikipedia.org/wiki/Slender_Man) with the playability of the traditional game of scavenger hunt. The website was made for mobile devices compatible with [ML5.js](https://ml5js.org/). The user enters the game’s website to see a portal where they can type a username and join a room to play with up to 5 people at the same time. Then, the user lands on the game page where they can read the instructions and start playing. During the game, the camera has to be enabled to scan the objects and get hints of their locations. 
 
-## II | Design and Wireframe:
+## II | Design and evolution of the concept:
 
 Our aim for this project was to create a mobile connected application, since it is something we hadn’t done before in this class and would certainly signify a new challenge for both of us. Comparing different mobile-friendly websites, we realized that our layout needed to be as simple and intuitive as possible. In the following image you can see the wireframe we used for our website:
 
@@ -60,26 +60,44 @@ Something that professor Govindarajan mentioned was that she didn’t notice tha
 
 ### A - Expansion Ideas: 
 
-- To add an option to host a scavenger hunt, where the user is able to assign a room name, download the 8 pages and write their own hints for their location.
-- To improve the ambience of the website by adding more references to its theme, Slenderman. Examples of this can be to add jumpscares, background music, and more images.
-- To add a sound effect that lets the user know that a page has been found by them or another user.
+To add an option to host a scavenger hunt, where the user is able to assign a room name, download the 8 pages and write their own hints for their location.
+To improve the ambiance of the website by adding more references to its theme, Slenderman. Examples of this can be adding jumpscares, background music, and more images.
+To change the design of the top right button, so the user knows it's clickable.
+To add a sound effect that lets the user know that a page has been found by them or another user.
 
 ### B - Technical ideas:
 
-- To fix the compatibility issues with iOS and Android, so more users can play the game.
-- To give more details about the users to offer a more personalized experience.
+To retrain the models and improve their accuracy.
+To fix the compatibility issues with iOS and Android, so that more users can play the game.
+To give more details about the users to offer a more personalized experience.
 
-## V | Back End
+## V| Back End
 
-- We used sockets for the back end 
-- After adding the user to their own rooms we save the user data, including name room and user score in the index.js 
-- We send user data to all the players so we can update the user scores for all players in the room.
-- We update the game level as well in the back end so that all users are updated at the same time.
+We used sockets.io and ML5.js in the creation of this project.
 
-### Errors 
+·Sockets.io:
+
+We used sockets for the back end.
+ After adding the user to their own rooms, we save the user data, including name room and user score in the index.js.
+We send user data to all the players so we can update the user scores for all players in the room.
+We update the game level as well in the back end so that all users are updated at the same time.
+
+·ML5.js:
+
+[ML5.js’ documentation](https://learn.ml5js.org/#/) and [The Coding Train’s tutorial](https://thecodingtrain.com/learning/ml5/) were necessary to understand all the library features we could use for our game. This is the list of steps followed:
+We first implemented [the Object Detection program with COCO-SD](https://thecodingtrain.com/learning/ml5/1.3-object-detection.html), to ensure that ML5.js could be run on mobile phones and with the back camera.
+Then, we used [the feature extractor classification] (https://thecodingtrain.com/learning/ml5/3.1-feature-extractor-classification.html) to train the ML5.js detector with our own model.
+Finally, we moved the code to ‘training.html’ to have an independent page where to train our models, and we added a (save button)[https://www.youtube.com/watch?v=eU7gIy3xV30] to download them.
+
+### Major problems and solutions
+
+#### Fatema Nassar:
 
 An error I made was not specifying the room information when sending the data, so even though the sockets worked perfectly fine, the data being sent through sockets was not specific to the room, but instead it was to all the players. We only noticed this problem the morning before the submission so we didn’t have time to fix it.
 The day of testing the win lose screen did not show up as it did during testing, we are unsure about the reason but if we go further with the game we plan on checking that error before publication.
+
+#### Andres Ugartechea:
+
 
 ## VI | Personal Review and thoughts: 
 ### [Fatema](https://github.com/fnassar):
