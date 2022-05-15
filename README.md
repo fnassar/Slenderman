@@ -96,9 +96,9 @@ We used sockets.io and ML5.js in the creation of this project.
 
 -We first implemented [the Object Detection program with COCO-SD](https://thecodingtrain.com/learning/ml5/1.3-object-detection.html), to ensure that ML5.js could be run on mobile phones and with the back camera.
 
--Then, we used [the feature extractor classification] (https://thecodingtrain.com/learning/ml5/3.1-feature-extractor-classification.html) to train the ML5.js detector with our own model.
+-Then, we used [the feature extractor classification](https://thecodingtrain.com/learning/ml5/3.1-feature-extractor-classification.html) to train the ML5.js detector with our own model.
 
--Finally, we moved the code to ‘training.html’ to have an independent page where to train our models, and we added a (save button)[https://www.youtube.com/watch?v=eU7gIy3xV30] to download them.
+-Finally, we moved the code to ‘training.html’ to have an independent page where to train our models, and we added a [save button](https://www.youtube.com/watch?v=eU7gIy3xV30) to download them.
 
 ### Major problems and solutions
 
